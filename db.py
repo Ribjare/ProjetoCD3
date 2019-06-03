@@ -44,14 +44,11 @@ class Task(Base):
     order = Column(String)
     creation_date = Column(Date)
     due_date = Column(Date)
-    completed = Column(Boolean, default= False)
-
+    completed = Column(Boolean, default=False)
 
 
 
 conn = sqlite3.connect('database.db', check_same_thread=False)
-
-
 
 
 def dict_factory(cursor, row):
