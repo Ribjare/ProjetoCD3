@@ -4,8 +4,54 @@
 """
 
 import sqlite3
+from sqlalchemy import create_engine, Column, Boolean, Integer, String, Date
+from sqlalchemy.ext.declarative import declarative_base
+
+engine = create_engine('sqlite:///database.db', echo=True)
+
+Base = declarative_base()
+
+
+# class for User table
+class User(Base):
+    __tablename__ = "user"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    email = Column(String)
+    username = Column(String)
+    password = Column(String)
+
+
+# class for the Project table
+class Project(Base):
+    __tablename__ = "project"
+
+    id = Column(Integer, primary_key=True)
+    # user
+    title = Column(String)
+    creation_date = Column(Date)
+    last_updated = Column(Date)
+
+
+# Class for Task table
+class Task(Base):
+    __tablename__ = "task"
+
+    id = Column(Integer, primary_key=True)
+    # projeto = Column(Integer)
+    title = Column(String)
+    order = Column(String)
+    creation_date = Column(Date)
+    due_date = Column(Date)
+    completed = Column(Boolean, default= False)
+
+
+
 
 conn = sqlite3.connect('database.db', check_same_thread=False)
+
+
 
 
 def dict_factory(cursor, row):
