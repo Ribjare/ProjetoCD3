@@ -14,34 +14,31 @@ def index():
     return app.send_static_file('index.html')
 
 
-@app.route("/api/users/", methods=['GET', 'POST'])
-def all_users():
-    if request.method == 'GET':
-        users = database_creation.get_users()
-        return make_response(jsonify(users))
-    elif request.method == 'POST':
-        data = request.get_json()
-        user = database_creation.add_user(data)
-        return make_response(jsonify(user), 201)
+@app.route("/api/users/", methods=['GET'])
+def get_current_user():  # Todo
+    print("Current user")
 
 
-@app.route("/api/users/<int:pk>/", methods=['GET', 'DELETE', 'PUT'])
-def single_user(pk):
-    user = database_creation.get_user(pk)
-    if user:
-        if request.method == 'GET':
-            return make_response(jsonify(user), 200)
-        elif request.method == 'DELETE':
-            print("DELETE")
-            database_creation.remove_user(user)
-            return make_response(jsonify(), 200)
-        elif request.method == 'PUT':
-            data = request.get_json()
-            database_creation.update_user(user, data)
-            return make_response(jsonify(), 200)
-    else:
-        return make_response(jsonify(), 404)
+@app.route("/api/user/login/", methods=['POST'])
+def do_login():  # todo
+    print("login")
+    # ir buscar json as popriedades
+    data = request.get_json()
+    print(data)
+
+# verificar se existe
+
+# se existir mandar ok
 
 
-database_creation.recreate_db()
+@app.route("/api/user/logout/", methods=['GET'])
+def do_logout():  # todo
+    print("logout")
+
+
+@app.route("/api/user/register/", methods=['POST'])
+def register():  # todo
+    print("register")
+
+
 app.run(host='0.0.0.0', port=8000, debug=True)
