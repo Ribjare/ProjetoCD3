@@ -14,13 +14,19 @@ def index():
     return app.send_static_file('index.html')
 
 
-@app.route("/api/users/", methods=['GET'])
-def get_current_user():  # Todo
+@app.route("/api/user/", methods=['POST'])
+def get_current_user():  # Todo gets current user
     print("Current user")
     bd = database_creation.DataBase()
+    # check if there is a login done
 
+    # get the information of json
     data = request.get_json()
     print(data)
+
+    # modify the parameteres
+
+    # send message
 
 
 @app.route("/api/user/login/", methods=['POST'])
@@ -41,6 +47,7 @@ def do_login():  # todo
 
     # se existir mandar ok
     if user is not None:
+        # create session
         return make_response(jsonify("You logged in"), 201)
     else:
         return make_response(jsonify("Invalid user"), 401)
@@ -56,14 +63,12 @@ def register():  # todo
     print("register")
     bd = database_creation.DataBase()
     data = request.get_json()
-
-    username = data["username"]
-    password = data["password"]
-    name = data["name"]
-    email = data["email"]
-
-    # if is none any parametre doesn't continue
-    if username is None or password is None or name is None or email is None:
+    try:
+        username = data["username"]
+        password = data["password"]
+        name = data["name"]
+        email = data["email"]
+    except KeyError:
         return make_response(jsonify("Missing parameter"), 400)
 
     user = bd.get_login_user(username, password)
@@ -76,6 +81,30 @@ def register():  # todo
         return make_response(jsonify("Registed"), 201)
     else:
         return make_response((jsonify("User Already Register"), 400))
+
+
+@app.route("/api/projects/", methods=['GET'])
+def get_all_project():   # todo
+    print("ALL PROJECT")
+    bd = database_creation.DataBase()
+
+    # id of user
+    #user_id =
+
+
+@app.route("/api/projects/<id>/", methods=['GET'])
+def get_project():   # todo
+    print("")
+
+
+@app.route("/api/projects/<id>/tasks/", methods=['POST'])
+def get_all_task():   # todo
+    print("")
+
+
+@app.route("/api/projects/<id>/tasks/<id>/", methods=['POST'])
+def get_task():   # todo
+    print("")
 
 
 app.run(host='0.0.0.0', port=8000, debug=True)
