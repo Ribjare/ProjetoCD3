@@ -21,7 +21,7 @@ class User(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(50))
-    email = Column(String(50))
+    email = Column(String(50), unique=True)
     username = Column(String(50), unique=True)
     password = Column(String(50))
 
@@ -62,13 +62,14 @@ class Task(Base):
 # create a new BD
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
+print("Limpar Base dados")
 
 
 #   Responsable to all methods to change the database
 class DataBase:
     def __init__(self):
         self.session = Session()
-        self.recreate_bd()
+        # self.recreate_bd()
 
     def recreate_bd(self):
         self.add_user("Daniel", "daniel@gmail.com", "ribjare", "1234")
@@ -102,6 +103,12 @@ class DataBase:
 
     def get_user(self, username):
         return self.session.query(User).filter(User.username == username)
+
+    def get_login_user(self, username, password):
+        list = []
+        querielist = self.session.query(User).filter(User.username == username, User.password == password)
+        for x in querielist:
+            return x
 
     def get_project(self, user_id, title):
         return self.session.query(Project).filter(Project.title == title, Project.user_id == user_id)
