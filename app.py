@@ -41,6 +41,7 @@ def do_login():  # todo
     username = data["username"]
     password = data["password"]
 
+
     # verificar se existe
     user = bd.get_login_user(username, password)
     print(user)
