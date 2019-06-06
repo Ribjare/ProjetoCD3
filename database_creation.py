@@ -7,6 +7,7 @@ from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from datetime import datetime
+from flask_login import UserMixin
 
 
 engine = create_engine('sqlite:///./database.db')
@@ -16,7 +17,7 @@ Session = sessionmaker(bind=engine)
 
 
 # class for User table
-class User(Base):
+class User(Base, UserMixin):
     __tablename__ = "user"
 
     id = Column(Integer, primary_key=True)

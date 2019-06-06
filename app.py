@@ -5,8 +5,10 @@
 
 from flask import Flask, request, jsonify, make_response
 import database_creation
+from flask_login import LoginManager, current_user, login_user
 
 app = Flask(__name__, static_url_path='/static')
+login = LoginManager(app)
 
 
 @app.route('/')
@@ -17,7 +19,6 @@ def index():
 @app.route("/api/user/", methods=['POST'])
 def get_current_user():  # Todo gets current user
     print("Current user")
-    bd = database_creation.DataBase()
     # check if there is a login done
 
     # get the information of json
@@ -32,6 +33,8 @@ def get_current_user():  # Todo gets current user
 @app.route("/api/user/login/", methods=['POST'])
 def do_login():  # todo
     print("login")
+    if current_user.is_authenticated:
+        return make_response(jsonify("You logged in"), 201)
     # ir buscar json as popriedades
     bd = database_creation.DataBase()
 
@@ -41,7 +44,6 @@ def do_login():  # todo
     username = data["username"]
     password = data["password"]
 
-
     # verificar se existe
     user = bd.get_login_user(username, password)
     print(user)
@@ -49,6 +51,7 @@ def do_login():  # todo
     # se existir mandar ok
     if user is not None:
         # create session
+        login_user(user)
         return make_response(jsonify("You logged in"), 201)
     else:
         return make_response(jsonify("Invalid user"), 401)
@@ -76,7 +79,7 @@ def register():  # todo
     print("USer:")
     print(user)
 
-    if user is not None:
+    if user is None:
         bd.add_user(username=username, password=password, name=name, email=email)
         print(bd.get_all_user())
         return make_response(jsonify("Registed"), 201)
@@ -90,7 +93,7 @@ def get_all_project():   # todo
     bd = database_creation.DataBase()
 
     # id of user
-    #user_id =
+    # user_id =
 
 
 @app.route("/api/projects/<id>/", methods=['GET'])
@@ -103,7 +106,7 @@ def get_all_task():   # todo
     print("")
 
 
-@app.route("/api/projects/<id>/tasks/<id>/", methods=['POST'])
+@app.route("/api/projects/<id>/tasks/<idx>/", methods=['POST'])
 def get_task():   # todo
     print("")
 
