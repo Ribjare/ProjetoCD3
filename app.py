@@ -5,10 +5,18 @@
 
 from flask import Flask, request, jsonify, make_response
 import database_creation
-from flask_login import LoginManager, current_user, login_user
+from flask_login import LoginManager, current_user, login_user, login_required
 
 app = Flask(__name__, static_url_path='/static')
-login = LoginManager(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
+app.config['SECRET_KEY'] = 'the random string'
+bd = database_creation.DataBase(app)
+
+
+@login_manager.user_loader
+def load_user(id):
+    return bd.get_user(id)
 
 
 @app.route('/')
@@ -16,27 +24,24 @@ def index():
     return app.send_static_file('index.html')
 
 
-@app.route("/api/user/", methods=['POST'])
+@app.route("/api/user/", methods=['GET'])
 def get_current_user():  # Todo gets current user
     print("Current user")
+
     # check if there is a login done
-
+    if not current_user.is_authenticated:
+        return make_response(jsonify("User not logged in"), 403)
     # get the information of json
-    data = request.get_json()
-    print(data)
-
-    # modify the parameteres
+    user = bd.get_user(current_user.id)
 
     # send message
+    return make_response(jsonify(user), 200)
 
 
 @app.route("/api/user/login/", methods=['POST'])
+@login_required
 def do_login():  # todo
     print("login")
-    if current_user.is_authenticated:
-        return make_response(jsonify("You logged in"), 201)
-    # ir buscar json as popriedades
-    bd = database_creation.DataBase()
 
     data = request.get_json()
     print(data)
@@ -65,7 +70,6 @@ def do_logout():  # todo
 @app.route("/api/user/register/", methods=['POST'])
 def register():  # todo
     print("register")
-    bd = database_creation.DataBase()
     data = request.get_json()
     try:
         username = data["username"]
@@ -90,24 +94,23 @@ def register():  # todo
 @app.route("/api/projects/", methods=['GET'])
 def get_all_project():   # todo
     print("ALL PROJECT")
-    bd = database_creation.DataBase()
 
     # id of user
     # user_id =
 
 
 @app.route("/api/projects/<id>/", methods=['GET'])
-def get_project():   # todo
+def get_project(id):   # todo
     print("")
 
 
 @app.route("/api/projects/<id>/tasks/", methods=['POST'])
-def get_all_task():   # todo
+def get_all_task(id):   # todo
     print("")
 
 
 @app.route("/api/projects/<id>/tasks/<idx>/", methods=['POST'])
-def get_task():   # todo
+def get_task(id, idx):   # todo
     print("")
 
 

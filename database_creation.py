@@ -8,6 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker
 from datetime import datetime
 from flask_login import UserMixin
+from flask_sqlalchemy import SQLAlchemy
 
 
 engine = create_engine('sqlite:///./database.db')
@@ -68,8 +69,8 @@ print("Limpar Base dados")
 
 #   Responsable to all methods to change the database
 class DataBase:
-    def __init__(self):
-        self.session = Session()
+    def __init__(self, app):
+        self.db = SQLAlchemy(app)
         # self.recreate_bd()
 
     def recreate_bd(self):
@@ -78,13 +79,13 @@ class DataBase:
 
     def add_user(self, name, email, username, password):
         user_new = User(name=name, email=email, username=username, password=password)
-        self.session.add(user_new)
-        self.session.commit()
+        self.db.session.add(user_new)
+        self.db.session.commit()
 
     def add_project(self, user, title):
         new_project = Project(user_id=user, title=title, creation_date=datetime.now(), last_updated=datetime.now())
-        self.session.add(new_project)
-        self.session.commit()
+        self.db.session.add(new_project)
+        self.db.session.commit()
 
     def add_task(self, project, title, order, due_date):
         new_task = Task(projeto_id=project, title=title, order=order, creation_date=datetime.now(),
@@ -102,8 +103,8 @@ class DataBase:
     def get_all_task(self):
         return self.session.query(Task).all()
 
-    def get_user(self, username):
-        return self.session.query(User).filter(User.username == username)
+    def get_user(self, id):
+        return self.session.query(User).filter(User.id == id)
 
     def get_login_user(self, username, password):
         list = []
