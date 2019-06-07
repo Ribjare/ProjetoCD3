@@ -90,44 +90,42 @@ class DataBase:
     def add_task(self, project, title, order, due_date):
         new_task = Task(projeto_id=project, title=title, order=order, creation_date=datetime.now(),
                         due_date=due_date, completed=False)
-        self.session.add(new_task)
-        self.session.commit()
+        self.db.session.add(new_task)
+        self.db.session.commit()
 
     #   Returns all users in database
     def get_all_user(self):
-        return self.session.query(User).all()
+        return self.db.session.query(User).all()
 
     def get_all_projects(self):
-        return self.session.query(Project).all()
+        return self.db.session.query(Project).all()
 
     def get_all_task(self):
-        return self.session.query(Task).all()
+        return self.db.session.query(Task).all()
 
     def get_user(self, id):
-        return self.session.query(User).filter(User.id == id)
+        return self.db.session.query(User).filter(User.id == id)
 
     def get_login_user(self, username, password):
         list = []
-        querielist = self.session.query(User).filter(User.username == username, User.password == password)
+        querielist = self.db.session.query(User).filter(User.username == username, User.password == password)
         for x in querielist:
             return x
 
     def get_project(self, user_id, title):
-        return self.session.query(Project).filter(Project.title == title, Project.user_id == user_id)
+        return self.db.session.query(Project).filter(Project.title == title, Project.user_id == user_id)
 
     # Get All projects from a user
     def get_all_projects_from_user(self, user_id):
-        return self.session.query(Project).filter(Project.user_id == user_id)
+        return self.db.session.query(Project).filter(Project.user_id == user_id)
 
     # Get a task
     def get_task(self, project_id, title):
-        return self.session.query(Task).filter(Task.projeto_id == project_id, Project.title == title)
+        return self.db.session.query(Task).filter(Task.projeto_id == project_id, Project.title == title)
 
     # Get all tasks from a project
     def get_all_task_from_project(self, project_id):
-        return self.session.query(Task).filter(Task.projeto_id == project_id)
+        return self.db.session.query(Task).filter(Task.projeto_id == project_id)
 
 
-x = DataBase()
-x.add_user("Nando", "nando@email", "atm", "atm5")
-print(x.get_all_user())
+#x.add_user("Nando", "nando@email", "atm", "atm5")

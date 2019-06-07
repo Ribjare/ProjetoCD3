@@ -38,7 +38,6 @@ def get_current_user():  # Todo gets current user
     return make_response(jsonify(user), 200)
 
 
-
 @app.route("/api/user/login/", methods=['POST'])
 @login_required
 def do_login():  # todo
