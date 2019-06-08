@@ -5,7 +5,9 @@
 
 from flask import Flask, request, jsonify, make_response
 import database_creation
+from sqlalchemy.ext.declarative import DeclarativeMeta
 from flask_login import LoginManager, current_user, login_user, login_required
+import json
 
 app = Flask(__name__, static_url_path='/static', )
 login_manager = LoginManager()
@@ -34,7 +36,7 @@ def get_current_user():  # Todo gets current user
     user = bd.get_user(current_user.id)
 
     # send message
-    return make_response(jsonify(user), 200)
+    return make_response(json.dumps(user, cls=AlchemyEncoder), 200)
 
 
 @app.route("/api/user/login/", methods=['POST'])
