@@ -7,7 +7,7 @@ from flask import Flask, request, jsonify, make_response
 import database_creation
 from flask_login import LoginManager, current_user, login_user, login_required
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/static', )
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'the random string'
@@ -63,12 +63,16 @@ def do_login():  # todo
 
 
 @app.route("/api/user/logout/", methods=['GET'])
+@login_required
 def do_logout():  # todo
     print("logout")
+    logout_user()
+    return make_response(jsonify("Logout done"), 201)
 
 
 @app.route("/api/user/register/", methods=['POST'])
 def register():  # todo
+    print(bd.get_all_user())
     print("register")
     data = request.get_json()
     try:
