@@ -11,6 +11,7 @@ app = Flask(__name__, static_url_path='/static', )
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'the random string'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./database.db'
 bd = database_creation.DataBase(app)
 
 
@@ -25,12 +26,10 @@ def index():
 
 
 @app.route("/api/user/", methods=['GET'])
+@login_required
 def get_current_user():  # Todo gets current user
     print("Current user")
 
-    # check if there is a login done
-    if not current_user.is_authenticated:
-        return make_response(jsonify("User not logged in"), 403)
     # get the information of json
     user = bd.get_user(current_user.id)
 
@@ -39,7 +38,6 @@ def get_current_user():  # Todo gets current user
 
 
 @app.route("/api/user/login/", methods=['POST'])
-@login_required
 def do_login():  # todo
     print("login")
 

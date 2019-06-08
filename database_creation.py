@@ -104,7 +104,7 @@ class DataBase:
         return self.db.session.query(Task).all()
 
     def get_user(self, id):
-        return self.db.session.query(User).filter(User.id == id)
+        return self.db.session.query(User).filter(User.id == id).first()
 
     def get_login_user(self, username, password):
         querielist = self.db.session.query(User).filter(User.username == username, User.password == password)
