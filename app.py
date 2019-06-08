@@ -35,8 +35,10 @@ def get_current_user():  # Todo gets current user
     # get the information of json
     user = bd.get_user(current_user.id)
 
+    x = user.__dict__
+    print(x)
     # send message
-    return make_response(json.dumps(user, cls=AlchemyEncoder), 200)
+    return make_response(jsonify(x), 200)
 
 
 @app.route("/api/user/login/", methods=['POST'])
@@ -95,19 +97,24 @@ def register():  # todo
         return make_response((jsonify("User Already Register"), 400))
 
 
-@app.route("/api/projects/", methods=['GET'])
+# get - get's all the project
+# Post- creates a project
+@app.route("/api/projects/", methods=['GET', 'POST'])
 def get_all_project():   # todo
     print("ALL PROJECT")
 
-    # id of user
-    # user_id =
+    if request.method == 'GET':
+        # id of user
+        return bd.get_all_projects_from_user(current_user.id)
 
 
-@app.route("/api/projects/<id>/", methods=['GET'])
+@app.route("/api/projects/<id>/", methods=['GET', 'POST'])
 def get_project(id):   # todo
     print("")
 
 
+# get - get's all the tasks
+# Post- creates a task
 @app.route("/api/projects/<id>/tasks/", methods=['POST'])
 def get_all_task(id):   # todo
     print("")
