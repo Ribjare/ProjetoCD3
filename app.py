@@ -6,7 +6,7 @@
 from flask import Flask, request, jsonify, make_response
 import database_creation
 from sqlalchemy.ext.declarative import DeclarativeMeta
-from flask_login import LoginManager, current_user, login_user, login_required
+from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 import json
 
 app = Flask(__name__, static_url_path='/static', )
@@ -34,7 +34,7 @@ def get_current_user():  # Todo gets current user
 
     # get the information of json
     user = bd.get_user(current_user.id)
-
+    print(user)
     x = user.__dict__
     print(x)
     # send message
@@ -86,8 +86,6 @@ def register():  # todo
         return make_response(jsonify("Missing parameter"), 400)
 
     user = bd.get_login_user(username, password)
-    print("USer:")
-    print(user)
 
     if user is None:
         bd.add_user(username=username, password=password, name=name, email=email)
