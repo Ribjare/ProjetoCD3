@@ -82,6 +82,7 @@ class DataBase:
         self.db.session.add(user_new)
         self.db.session.commit()
 
+    #   add a new project to the list
     def add_project(self, user, title):
         new_project = Project(user_id=user, title=title, creation_date=datetime.now(), last_updated=datetime.now())
         self.db.session.add(new_project)
@@ -111,20 +112,20 @@ class DataBase:
         for x in querielist:
             return x
 
-    def get_project(self, user_id, title):
-        return self.db.session.query(Project).filter(Project.title == title, Project.user_id == user_id)
+    def get_project(self, user_id, project_id):
+        return self.db.session.query(Project).filter(Project.id == project_id, Project.user_id == user_id).first()
 
     # Get All projects from a user
     def get_all_projects_from_user(self, user_id):
-        return self.db.session.query(Project).filter(Project.user_id == user_id)
+        return self.db.session.query(Project).filter(Project.user_id == user_id).all()
 
     # Get a task
     def get_task(self, project_id, title):
-        return self.db.session.query(Task).filter(Task.projeto_id == project_id, Project.title == title)
+        return self.db.session.query(Task).filter(Task.projeto_id == project_id, Project.title == title).first()
 
     # Get all tasks from a project
     def get_all_task_from_project(self, project_id):
-        return self.db.session.query(Task).filter(Task.projeto_id == project_id)
+        return self.db.session.query(Task).filter(Task.projeto_id == project_id).all()
 
 
 #x.add_user("Nando", "nando@email", "atm", "atm5")

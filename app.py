@@ -17,6 +17,25 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./database.db'
 bd = database_creation.DataBase(app)
 
 
+class AlchemyEncoder(json.JSONEncoder):
+
+    def default(self, obj):
+        if isinstance(obj.__class__, DeclarativeMeta):
+            # an SQLAlchemy class
+            fields = {}
+            for field in [x for x in dir(obj) if not x.startswith('_') and x != 'metadata']:
+                data = obj.__getattribute__(field)
+                try:
+                    json.dumps(data)     # this will fail on non-encodable values, like other classes
+                    fields[field] = data
+                except TypeError:
+                    fields[field] = None
+            # a json-encodable dict
+            return fields
+
+        return json.JSONEncoder.default(self, obj)
+
+
 @login_manager.user_loader
 def load_user(id):
     return bd.get_user(id)
@@ -35,7 +54,14 @@ def get_current_user():  # Todo gets current user
     # get the information of json
     user = bd.get_user(current_user.id)
     print(user)
-    x = user.__dict__
+    # convert to a dict
+    x = {
+        'username': user.username,
+        'email': user.email,
+        'name': user.name,
+        'Password': user.password
+
+    }
     print(x)
     # send message
     return make_response(jsonify(x), 200)
@@ -98,29 +124,50 @@ def register():  # todo
 # get - get's all the project
 # Post- creates a project
 @app.route("/api/projects/", methods=['GET', 'POST'])
-def get_all_project():   # todo
+@login_required
+def get_all_project():  # todo
     print("ALL PROJECT")
-
+    print(current_user)
     if request.method == 'GET':
         # id of user
-        return bd.get_all_projects_from_user(current_user.id)
+        project_list = bd.get_all_projects_from_user(current_user.id)
+
+        print(project_list)
+        return make_response(json.dumps(project_list, cls=AlchemyEncoder), 200)
+    if request.method == 'POST':
+        data = request.get_json()
+        try:
+            title = data["title"]
+        except KeyError:
+            return make_response(jsonify("Missing parameter"), 400)
+
+        bd.add_project(title=title, user=current_user.id)
+        return make_response(jsonify("Project Created"), 201)
 
 
-@app.route("/api/projects/<id>/", methods=['GET', 'POST'])
-def get_project(id):   # todo
-    print("")
+@app.route("/api/projects/<int:id>/", methods=['GET', 'POST'])
+@login_required
+def get_project(id):  # todo
+    print("Get project")
+
+    if request.method == 'GET':
+        project = bd.get_project(current_user.id, id)
+        return make_response(json.dumps(project, cls=AlchemyEncoder), 200)
+
 
 
 # get - get's all the tasks
 # Post- creates a task
-@app.route("/api/projects/<id>/tasks/", methods=['POST'])
-def get_all_task(id):   # todo
-    print("")
+@app.route("/api/projects/<int:id>/tasks/", methods=['POST'])
+@login_required
+def get_all_task(id):  # todo
+    print("Get all tasks")
 
 
-@app.route("/api/projects/<id>/tasks/<idx>/", methods=['POST'])
-def get_task(id, idx):   # todo
-    print("")
+@app.route("/api/projects/<int:id>/tasks/<int:idx>/", methods=['POST'])
+@login_required
+def get_task(id, idx):  # todo
+    print("Get task")
 
 
 app.run(host='0.0.0.0', port=8000, debug=True)
