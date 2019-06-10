@@ -145,29 +145,82 @@ def get_all_project():  # todo
         return make_response(jsonify("Project Created"), 201)
 
 
-@app.route("/api/projects/<int:id>/", methods=['GET', 'POST'])
+@app.route("/api/projects/<int:id>/", methods=['GET', 'PUT', 'DELETE'])
 @login_required
-def get_project(id):  # todo
-    print("Get project")
+def get_project(id):  # todo parametro para a exceçao
 
+    # Gets the target project
     if request.method == 'GET':
+        print("Get project")
+
         project = bd.get_project(current_user.id, id)
         return make_response(json.dumps(project, cls=AlchemyEncoder), 200)
 
+    # updates the target project
+    if request.method == 'PUT':
+        print("update project")
+
+        data = request.get_json()
+        try:
+            bd.update_project(id, data)
+        except:
+            return make_response(jsonify("Invalid parameters"), 400)
+        return make_response(jsonify("Project updated"), 200)
+
+    # deletes the target project
+    if request.method == 'DELETE':
+        print("delete project")
+
+        bd.delete_project(id)
+        return make_response(jsonify("Project deleted"), 200)
 
 
 # get - get's all the tasks
 # Post- creates a task
-@app.route("/api/projects/<int:id>/tasks/", methods=['POST'])
+@app.route("/api/projects/<int:id>/tasks/", methods=['GET', 'POST'])
 @login_required
 def get_all_task(id):  # todo
     print("Get all tasks")
+    if request.method == 'GET':
+        all_tasks = bd.get_all_task_from_project(id)
+        return make_response(json.dumps(all_tasks, cls=AlchemyEncoder), 200)
+
+    if request.method == 'POST':
+        data = request.get_json()
+        try:
+            title = data["title"]
+            order = data["order"]
+            due_date = data["due_date"] #mexer nisto para transformar string em date
+        except KeyError:
+            return make_response(jsonify("Missing parameter"), 400)
+
+        bd.add_task(project_id=id, title=title, order=order, due_date=due_date)
+
+        return make_response(jsonify("Task created"), 201)
 
 
-@app.route("/api/projects/<int:id>/tasks/<int:idx>/", methods=['POST'])
+@app.route("/api/projects/<int:id_project>/tasks/<int:id_task>/", methods=['GET', 'PUT', 'DELETE'])
 @login_required
-def get_task(id, idx):  # todo
+def get_task(id_project, id_task):  # todo
     print("Get task")
+
+    if request.method == 'GET':
+        task = bd.get_task(id_project, id_task)
+        return make_response(json.dumps(task, cls=AlchemyEncoder), 200)
+
+    if request.method == 'PUT':
+        data = request.get_json()
+        try:
+            bd.update_task(id, data)
+        except:
+            return make_response(jsonify('Incorrect parameters'))
+
+        return make_response(jsonify('Task Updated'), 200)
+
+    if request.method == 'DELETE':
+
+        bd.delete_task(id_task)
+        return make_response(jsonify('Task Deleted'), 200)
 
 
 app.run(host='0.0.0.0', port=8000, debug=True)

@@ -88,8 +88,8 @@ class DataBase:
         self.db.session.add(new_project)
         self.db.session.commit()
 
-    def add_task(self, project, title, order, due_date):
-        new_task = Task(projeto_id=project, title=title, order=order, creation_date=datetime.now(),
+    def add_task(self, project_id, title, order, due_date):
+        new_task = Task(projeto_id=project_id, title=title, order=order, creation_date=datetime.now(),
                         due_date=due_date, completed=False)
         self.db.session.add(new_task)
         self.db.session.commit()
@@ -120,12 +120,28 @@ class DataBase:
         return self.db.session.query(Project).filter(Project.user_id == user_id).all()
 
     # Get a task
-    def get_task(self, project_id, title):
-        return self.db.session.query(Task).filter(Task.projeto_id == project_id, Project.title == title).first()
+    def get_task(self, project_id, task_id):
+        return self.db.session.query(Task).filter(Task.projeto_id == project_id, Task.id == task_id).first()
 
     # Get all tasks from a project
     def get_all_task_from_project(self, project_id):
         return self.db.session.query(Task).filter(Task.projeto_id == project_id).all()
+
+    def delete_project(self, project_id):
+        self.db.session.query(Project).filter(Project.id == project_id).delete()
+        self.db.session.commit()
+
+    def update_project(self, project_id, changed_data):
+        self.db.session.query(Project).filter(Project.id == project_id).update(changed_data)
+        self.db.session.commit()
+
+    def delete_task(self, task_id):
+        self.db.session.query(Task).filter(Task.id == task_id).delete()
+        self.db.session.commit()
+
+    def update_task(self, task_id, changed_data):
+        self.db.session.query(Task).filter(Task.id == task_id).update(changed_data)
+        self.db.session.commit()
 
 
 #x.add_user("Nando", "nando@email", "atm", "atm5")
