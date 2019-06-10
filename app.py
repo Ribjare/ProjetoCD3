@@ -7,6 +7,7 @@ from flask import Flask, request, jsonify, make_response
 import database_creation
 from sqlalchemy.ext.declarative import DeclarativeMeta
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
+from datetime import datetime
 import json
 
 app = Flask(__name__, static_url_path='/static', )
@@ -190,11 +191,14 @@ def get_all_task(id):  # todo
         try:
             title = data["title"]
             order = data["order"]
-            due_date = data["due_date"] #mexer nisto para transformar string em date
+            due_date = data["due_date"]
+            date = datetime.strptime(due_date, '%d %m %Y')
         except KeyError:
             return make_response(jsonify("Missing parameter"), 400)
+        except ValueError:
+            return make_response(jsonify("Date format incorrect, try: day month year"))
 
-        bd.add_task(project_id=id, title=title, order=order, due_date=due_date)
+        bd.add_task(project_id=id, title=title, order=order, due_date=date)
 
         return make_response(jsonify("Task created"), 201)
 
@@ -208,7 +212,7 @@ def get_task(id_project, id_task):  # todo
         task = bd.get_task(id_project, id_task)
         return make_response(json.dumps(task, cls=AlchemyEncoder), 200)
 
-    if request.method == 'PUT':
+    if request.method == 'PUT': # falta isto do update da task
         data = request.get_json()
         try:
             bd.update_task(id, data)
