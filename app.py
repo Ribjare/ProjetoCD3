@@ -213,6 +213,7 @@ def get_task(id_project, id_task):  # todo
         return make_response(json.dumps(task, cls=AlchemyEncoder), 200)
 
     if request.method == 'PUT': # falta isto do update da task
+
         data = request.get_json()
         try:
             bd.update_task(id, data)
