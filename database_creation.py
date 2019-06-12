@@ -39,12 +39,15 @@ class Project(Base):
 
     id = Column(Integer, primary_key=True)
     title = Column(String(50))
-    creation_date = Column(Date, default=datetime.now())
-    last_updated = Column(Date, onupdate=datetime.now())
+    creation_date = Column(DateTime, default=datetime.utcnow)
+    last_updated = Column(DateTime, onupdate=datetime.utcnow)
 
     user_id = Column(Integer, ForeignKey('user.id'))
 
     children = relationship("Task")
+
+    def __repr__(self):
+        return "<Project(title='%s', creation_date='%s', last_update='%s')>" % (self.title, self.creation_date, self.last_updated)
 
 
 # Class for Task table
@@ -54,11 +57,14 @@ class Task(Base):
     id = Column(Integer, primary_key=True)
     title = Column(String(50))
     order = Column(String(50))
-    creation_date = Column(Date, default=datetime.now())
+    creation_date = Column(DateTime, default=datetime.utcnow)
     due_date = Column(Date)
     completed = Column(Boolean, default=False)
 
     projeto_id = Column(Integer, ForeignKey('project.id'))
+
+    def __repr__(self):
+        return "<Task(title='%s', due_date='%s', creation_date='%s')>" % (self.title, self.due_date, self.creation_date)
 
 
 # create a new BD
@@ -125,6 +131,7 @@ class DataBase:
 
     # Get all tasks from a project
     def get_all_task_from_project(self, project_id):
+        if
         return self.db.session.query(Task).filter(Task.projeto_id == project_id).all()
 
     def delete_project(self, project_id):
@@ -142,6 +149,7 @@ class DataBase:
     def update_task(self, task_id, changed_data):
         self.db.session.query(Task).filter(Task.id == task_id).update(changed_data)
         self.db.session.commit()
+
 
 
 #x.add_user("Nando", "nando@email", "atm", "atm5")

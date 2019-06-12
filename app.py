@@ -4,10 +4,11 @@
 """
 
 from flask import Flask, request, jsonify, make_response
-import database_creation
 from sqlalchemy.ext.declarative import DeclarativeMeta
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from datetime import datetime
+
+import database_creation
 import json
 
 app = Flask(__name__, static_url_path='/static', )
@@ -61,8 +62,8 @@ def get_current_user():  # Todo gets current user
         'email': user.email,
         'name': user.name,
         'Password': user.password
-
     }
+
     print(x)
     # send message
     return make_response(jsonify(x), 200)
@@ -212,13 +213,14 @@ def get_task(id_project, id_task):  # todo
         task = bd.get_task(id_project, id_task)
         return make_response(json.dumps(task, cls=AlchemyEncoder), 200)
 
-    if request.method == 'PUT': # falta isto do update da task
+    if request.method == 'PUT':
 
         data = request.get_json()
         try:
-            bd.update_task(id, data)
-        except:
-            return make_response(jsonify('Incorrect parameters'))
+            data['due_date'] = datetime.strptime(data['due_date'], '%d %m %Y')
+            bd.update_task(id_task, data)
+        except KeyError:
+            make_response(jsonify('Incorrect Parameter'), 400)
 
         return make_response(jsonify('Task Updated'), 200)
 
