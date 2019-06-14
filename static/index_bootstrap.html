@@ -18,23 +18,23 @@
       <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content">
         <h1>Login</h1>
         <ul id="users"></ul>
-        <form action= "javascript:processar();" id="formLogin">
+        <form action= "javascript:login();" id="formLogin">
             <fieldset>
                 <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="UserName" placeholder="UserName" />
                 <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Password" placeholder="Password"/>
-                <button type="button" class="btn btn-primary">Login</button>
+                <button type="submit" form="formLogin" class="btn btn-primary">Login</button>
             </fieldset>
         </form>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content">
       <h1>Registar</h1>
-      <form action= "javascript:processar();" id="formRegistar">
+      <form action= "javascript:register();" id="formRegistar">
           <fieldset>
-              <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="name" placeholder="name" />
+              <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="name" placeholder="Name" />
               <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Email" placeholder="Email"/>
               <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="UserName" placeholder="UserName"/>
               <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Password" placeholder="Password"/>
-             <button type="button" class="btn btn-primary">Regist</button>
+              <button type="submit" form="formRegistar" class="btn btn-primary">Registar</button>
          </fieldset>
       </form>
       </div>

@@ -49,7 +49,7 @@ def load_user(id):
 
 @app.route('/')
 def index():
-    return app.send_static_file('index2.html')
+    return app.send_static_file('index_bootstrap.html')
 
 
 @app.route("/api/user/", methods=['GET'])
