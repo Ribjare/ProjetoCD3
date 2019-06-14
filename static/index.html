@@ -8,20 +8,24 @@
 <div>
     <h1>Login</h1>
     <ul id="users"></ul>
-    <form id="formLogin">
-        <input name="UserName" placeholder="UserName" />
-        <input name="Password" placeholder="Password"/>
-        <input type="button" value="Login" onclick="addUser()" />
+    <form action= "javascript:processar();" id="formLogin">
+        <fieldset>
+            <input name="UserName" placeholder="UserName" />
+            <input name="Password" placeholder="Password"/>
+            <input type="button" value="Login" onclick="addUser()" />
+        </fieldset>
     </form>
 </div>
 <div>
     <h1>Registar</h1>
-    <form id="formRegistar">
-        <input name="name" placeholder="name" />
-        <input name="E-mail" placeholder="E-mail"/>
-        <input name="UserName" placeholder="UserName"/>
-        <input name="Password" placeholder="Password"/>
-        <input type="button" value="Add user" onclick="addUser()" />
+    <form action= "javascript:processar();" id="formRegistar">
+        <fieldset>
+            <input name="name" placeholder="name" />
+            <input name="E-mail" placeholder="E-mail"/>
+            <input name="UserName" placeholder="UserName"/>
+            <input name="Password" placeholder="Password"/>
+            <input type="button" value="Add user" onclick="addUser()" />
+        </fieldset>
     </form>
 </div>
 </body>

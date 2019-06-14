@@ -2,6 +2,26 @@
  * REST Client
  *
  */
+function elementosFilhos(elemento) {
+    /** @todo Retornar os elementos filhos (nós do tipo Node.ELEMENT_NODE) num array */
+    let childNode= [];
+    for(let child of elemento.childNodes)
+        if(child.nodeType===Node.ELEMENT_NODE)
+            childNode.push(child);
+    return childNode;
+};
+
+function substituirFilhos(id, novoFilho) {
+    /** @todo Procurar o elemento com o id dado e substituir os seus filhos pelo novo filho. */
+    let elemento = document.getElementById(id);
+    while(elemento.firstChild)
+        elemento.removeChild(elemento.firstChild);
+    elemento.appendChild(novoFilho);
+};
+
+window.onload = function (event) {
+    window.dados = new Informacao("informacao");
+}
 
 function getUsers() {
     var req = new XMLHttpRequest();
