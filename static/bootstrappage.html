@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>REST Client</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script type="text/javascript" src="/static/script.js" defer></script>
+</head>
+<body>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+<div style="max-width: 1800px;
+     margin: 0 auto;
+     padding:10px">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content">
+        <h1>Login</h1>
+        <ul id="users"></ul>
+        <form action= "javascript:processar();" id="formLogin">
+            <fieldset>
+                <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="UserName" placeholder="UserName" />
+                <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Password" placeholder="Password"/>
+                <input class="col-md-3 col-sm-3 col-xs-3 col-lg-3" type="button" value="Login" onclick="addUser()" />
+            </fieldset>
+        </form>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content">
+      <h1>Registar</h1>
+      <form action= "javascript:processar();" id="formRegistar">
+          <fieldset>
+              <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="name" placeholder="name" />
+              <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="E-mail" placeholder="E-mail"/>
+              <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="UserName" placeholder="UserName"/>
+              <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Password" placeholder="Password"/>
+             <input type="button" value="Add user" onclick="addUser()" />
+         </fieldset>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
