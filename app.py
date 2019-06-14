@@ -21,6 +21,10 @@ bd = database_creation.DataBase(app)
 
 class AlchemyEncoder(json.JSONEncoder):
 
+    def myconverter(o):
+        if isinstance(o, datetime):
+            return "{}-{}-{}".format(o.year, o.month, o.day)
+
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
             # an SQLAlchemy class
@@ -28,8 +32,11 @@ class AlchemyEncoder(json.JSONEncoder):
             for field in [x for x in dir(obj) if not x.startswith('_') and x != 'metadata']:
                 data = obj.__getattribute__(field)
                 try:
-                    json.dumps(data)     # this will fail on non-encodable values, like other classes
-                    fields[field] = data
+                    if type(data) == datetime:
+                        fields[field] = "{}-{}-{}".format(data.year, data.month, data.day)
+                    else:
+                        json.dumps(data)  # this will fail on non-encodable values, like other classes
+                        fields[field] = data
                 except TypeError:
                     fields[field] = None
             # a json-encodable dict
@@ -194,6 +201,7 @@ def get_all_task(id):  # todo
             order = data["order"]
             due_date = data["due_date"]
             date = datetime.strptime(due_date, '%d %m %Y')
+            print(date)
         except KeyError:
             return make_response(jsonify("Missing parameter"), 400)
         except ValueError:
@@ -208,26 +216,30 @@ def get_all_task(id):  # todo
 @login_required
 def get_task(id_project, id_task):  # todo
     print("Get task")
+    project = bd.get_project(current_user.id, id_project)
 
-    if request.method == 'GET':
-        task = bd.get_task(id_project, id_task)
-        return make_response(json.dumps(task, cls=AlchemyEncoder), 200)
+    # Check if the current user as access to this project
+    if project is None:
+        return make_response(jsonify("Sem autorizacao para aceder a este recurso"), 403)
+    else:
+        if request.method == 'GET':
+            task = bd.get_task(id_project, id_task)
+            return make_response(json.dumps(task, cls=AlchemyEncoder), 200)
 
-    if request.method == 'PUT':
+        if request.method == 'PUT':
 
-        data = request.get_json()
-        try:
-            data['due_date'] = datetime.strptime(data['due_date'], '%d %m %Y')
-            bd.update_task(id_task, data)
-        except KeyError:
-            make_response(jsonify('Incorrect Parameter'), 400)
+            data = request.get_json()
+            try:
+                data['due_date'] = datetime.strptime(data['due_date'], '%d %m %Y')
+                bd.update_task(id_task, data)
+            except KeyError:
+                make_response(jsonify('Incorrect Parameter'), 400)
 
-        return make_response(jsonify('Task Updated'), 200)
+            return make_response(jsonify('Task Updated'), 200)
 
-    if request.method == 'DELETE':
-
-        bd.delete_task(id_task)
-        return make_response(jsonify('Task Deleted'), 200)
+        if request.method == 'DELETE':
+            bd.delete_task(id_task)
+            return make_response(jsonify('Task Deleted'), 200)
 
 
 app.run(host='0.0.0.0', port=8000, debug=True)

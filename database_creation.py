@@ -77,7 +77,6 @@ print("Limpar Base dados")
 class DataBase:
     def __init__(self, app):
         self.db = SQLAlchemy(app)
-        # self.recreate_bd()
 
     def recreate_bd(self):
         self.add_user("Daniel", "daniel@gmail.com", "ribjare", "1234")
@@ -95,6 +94,7 @@ class DataBase:
         self.db.session.commit()
 
     def add_task(self, project_id, title, order, due_date):
+
         new_task = Task(projeto_id=project_id, title=title, order=order, creation_date=datetime.now(),
                         due_date=due_date, completed=False)
         self.db.session.add(new_task)
@@ -131,7 +131,6 @@ class DataBase:
 
     # Get all tasks from a project
     def get_all_task_from_project(self, project_id):
-        if
         return self.db.session.query(Task).filter(Task.projeto_id == project_id).all()
 
     def delete_project(self, project_id):
@@ -152,4 +151,3 @@ class DataBase:
 
 
 
-#x.add_user("Nando", "nando@email", "atm", "atm5")
