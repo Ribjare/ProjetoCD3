@@ -3,10 +3,11 @@
 
 """
 
-from flask import Flask, request, jsonify, make_response
+from flask import Flask, request, jsonify, make_response, redirect, url_for
 from sqlalchemy.ext.declarative import DeclarativeMeta
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from datetime import datetime
+import sqlalchemy.exc
 
 import database_creation
 import json
@@ -20,10 +21,6 @@ bd = database_creation.DataBase(app)
 
 
 class AlchemyEncoder(json.JSONEncoder):
-
-    def myconverter(o):
-        if isinstance(o, datetime):
-            return "{}-{}-{}".format(o.year, o.month, o.day)
 
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
@@ -88,6 +85,7 @@ def do_login():  # todo
 
     # verificar se existe
     user = bd.get_login_user(username, password)
+    print("Login User")
     print(user)
 
     # se existir mandar ok
@@ -112,6 +110,8 @@ def register():  # todo
     print(bd.get_all_user())
     print("register")
     data = request.get_json()
+    print("all users")
+    print(bd.get_all_user())
     try:
         username = data["username"]
         password = data["password"]
@@ -119,6 +119,8 @@ def register():  # todo
         email = data["email"]
     except KeyError:
         return make_response(jsonify("Missing parameter"), 400)
+    except sqlalchemy.exc.IntegrityError:
+        return make_response(jsonify(""), 400)
 
     user = bd.get_login_user(username, password)
 
@@ -172,7 +174,7 @@ def get_project(id):  # todo parametro para a exceçao
         data = request.get_json()
         try:
             bd.update_project(id, data)
-        except:
+        except sqlalchemy.exc.IntegrityError:
             return make_response(jsonify("Invalid parameters"), 400)
         return make_response(jsonify("Project updated"), 200)
 
@@ -190,6 +192,12 @@ def get_project(id):  # todo parametro para a exceçao
 @login_required
 def get_all_task(id):  # todo
     print("Get all tasks")
+    project = bd.get_project(current_user.id, id)
+
+    # Check if the current user as access to this project
+    if project is None:
+        return make_response(jsonify("Sem autorizacao para aceder a este recurso"), 403)
+
     if request.method == 'GET':
         all_tasks = bd.get_all_task_from_project(id)
         return make_response(json.dumps(all_tasks, cls=AlchemyEncoder), 200)
@@ -201,7 +209,6 @@ def get_all_task(id):  # todo
             order = data["order"]
             due_date = data["due_date"]
             date = datetime.strptime(due_date, '%d %m %Y')
-            print(date)
         except KeyError:
             return make_response(jsonify("Missing parameter"), 400)
         except ValueError:

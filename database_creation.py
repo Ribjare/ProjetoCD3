@@ -58,7 +58,7 @@ class Task(Base):
     title = Column(String(50))
     order = Column(String(50))
     creation_date = Column(DateTime, default=datetime.utcnow)
-    due_date = Column(Date)
+    due_date = Column(DateTime)
     completed = Column(Boolean, default=False)
 
     projeto_id = Column(Integer, ForeignKey('project.id'))

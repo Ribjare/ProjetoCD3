@@ -6,39 +6,50 @@
 function getUsers() {
     var req = new XMLHttpRequest();
     req.open("GET", "/api/users/");
-    req.addEventListener("load", function() {
+    req.addEventListener("load", function () {
         var users = JSON.parse(this.responseText);
         var ul = document.getElementById('users');
         ul.innerHTML = '';
         for (var i in users) {
             var li = document.createElement('li');
             li.innerHTML = users[i].name + ' (' + users[i].age + ')';
-            li.innerHTML += " <button onclick='updateUser(" + users[i].id +  ")'>Update</button>";
-            li.innerHTML += " <button onclick='deleteUser(" + users[i].id +  ")'>Delete</button>";
+            li.innerHTML += " <button onclick='updateUser(" + users[i].id + ")'>Update</button>";
+            li.innerHTML += " <button onclick='deleteUser(" + users[i].id + ")'>Delete</button>";
             ul.appendChild(li);
         }
     });
     req.send();
 }
 
-function addUser() {
-    var form = document.getElementById("form");
+function login() {
+    var form = document.getElementById("formLogin");
+    var username = form.UserName.value;
+    var password = form.Password.value;
+
+    var req = new XMLHttpRequest();
+    req.open("POST", "/api/user/login/");
+    req.setRequestHeader("Content-Type", "application/json");
+    req.addEventListener("load", function(){
+        window.location.href = 'static/MainPage.html';
+    });
+    req.send(JSON.stringify({"username": username, "password": password}));
+}
+
+function register(){
+    var form = document.getElementById("formRegistar");
     var name = form.name.value;
-    var age = form.age.value;
+    var email = form.Email.value;
+    var username = form.UserName.value;
+    var password = form.Password.value;
 
-    console.log("Add: " + name + " " + age);
+    var req = new XMLHttpRequest();
+    req.open("POST", "/api/user/register/");
+    req.setRequestHeader("Content-Type", "application/json");
+    req.addEventListener("load", function(){
+
+    });
+    req.send(JSON.stringify({"username": username, "password": password,
+                            "name": name, "email": email}));
+
 }
 
-function updateUser(id) {
-    var form = document.getElementById("form");
-    var name = form.name.value;
-    var age = form.age.value;
-
-    console.log("Update: " + name + " " + age);
-}
-
-function deleteUser(id) {
-    console.log("Delete: " + id)
-}
-
-getUsers();
