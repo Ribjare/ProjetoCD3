@@ -125,9 +125,11 @@ def register():  # todo
         name = data["name"]
         email = data["email"]
     except KeyError:
+        print("aprametro")
         return make_response(jsonify("Missing parameter"), 400)
     except sqlalchemy.exc.IntegrityError:
-        return make_response(jsonify(""), 400)
+        print("intengrity")
+        return make_response(jsonify("Integrity Error"), 400)
 
     user = bd.get_login_user(username, password)
 

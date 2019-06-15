@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="471a8cf2-658b-453f-91f5-854a234fe913" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/MainPage.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/index_bootstrap.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/MainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/MainPage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/project_task_handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/project_task_handler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/MainPage.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/index_bootstrap.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,11 +21,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-              <folding>
-                <element signature="e#34#126#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="125" column="27" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -37,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/static/index_bootstrap.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
-              <caret line="8" column="54" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="54" />
+              <caret line="34" column="55" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -57,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
+            <state relative-caret-position="172">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -66,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/MainPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
+            <state relative-caret-position="102">
+              <caret line="36" column="85" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="85" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -78,8 +72,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+            <state relative-caret-position="512">
+              <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -111,6 +105,7 @@
     <findStrings>
       <find>log</find>
       <find>inf</find>
+      <find>getTask</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -124,15 +119,15 @@
         <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/static/bootstrappage.html" />
         <option value="$PROJECT_DIR$/static/index2.html" />
-        <option value="$PROJECT_DIR$/static/script.js" />
-        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/index_bootstrap.html" />
+        <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/static/script.js" />
         <option value="$PROJECT_DIR$/static/MainPage.html" />
         <option value="$PROJECT_DIR$/static/project_task_handler.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="735" />
@@ -213,6 +208,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.app" />
+        <item itemvalue="Python.app" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +232,8 @@
       <workItem from="1560529621654" duration="2449000" />
       <workItem from="1560536428694" duration="3769000" />
       <workItem from="1560550501244" duration="5000000" />
-      <workItem from="1560589843588" duration="17982000" />
+      <workItem from="1560589843588" duration="21958000" />
+      <workItem from="1560613619067" duration="3365000" />
     </task>
     <task id="LOCAL-00001" summary="login parece feito&#10;register parece feto">
       <created>1559743638532</created>
@@ -350,11 +347,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560605751206</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="javla2">
+      <created>1560609417610</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1560609417610</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101749000" />
+    <option name="totallyTimeSpent" value="109090000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -366,15 +370,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="676" y="0" width="697" height="735" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17397882" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.1762481" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7034796" visible="true" weight="0.3420622" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7034796" weight="0.13256955" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -392,18 +396,18 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19441772" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1762481" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7034796" visible="true" weight="0.27152318" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7034796" visible="true" weight="0.13256955" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4977307" weight="0.22591361" />
+      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4977307" weight="0.45662847" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2965204" side_tool="true" weight="0.19312602" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.18330605" />
@@ -469,10 +473,11 @@
     <MESSAGE value="falta testar muita coisa" />
     <MESSAGE value="jscritp do login &quot;done&quot; +/-" />
     <MESSAGE value="javla" />
-    <option name="LAST_COMMIT_MESSAGE" value="javla" />
+    <MESSAGE value="javla2" />
+    <option name="LAST_COMMIT_MESSAGE" value="javla2" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjetoCD3$app.coverage" NAME="app Coverage Results" MODIFIED="1560609327664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetoCD3$app.coverage" NAME="app Coverage Results" MODIFIED="1560617944295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/static/bootstrappage.html" />
@@ -500,42 +505,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="e#34#126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/MainPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="125" column="27" selection-start-line="125" selection-start-column="22" selection-end-line="125" selection-end-column="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/index_bootstrap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="8" column="54" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="54" />
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="172">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/MainPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="36" column="85" selection-start-line="36" selection-start-column="73" selection-end-line="36" selection-end-column="85" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
+        <state relative-caret-position="512">
+          <caret line="57" column="46" lean-forward="true" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
         </state>
       </provider>
     </entry>

@@ -40,10 +40,11 @@ function login() {
 
 function register(){
     var form = document.getElementById("formRegistar");
-    var name = form.name.value;
+    var name = form.Name.value;
     var email = form.Email.value;
     var username = form.UserName.value;
     var password = form.Password.value;
+
 
     var req = new XMLHttpRequest();
     req.open("POST", "/api/user/register/");
