@@ -5,7 +5,7 @@
     <title>REST Client</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script type="text/javascript" src="/static/script.js" defer></script>
+    <script type="text/javascript" src="/static/project_task_handler.js" defer></script>
 </head>
 <body>
 <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -13,7 +13,7 @@
      margin: 0 auto;
      padding:10px">
     <div class="container-fluid">
-        <button type="button" class="btn btn-danger" onclick="">Logout</button>
+        <button type="button" class="btn btn-danger" onclick="logout()">Logout</button>
         <div class="row">
 
             <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content" id="CriarProjectos">
@@ -21,7 +21,7 @@
                 <form action="javascript:createProject();" id="formProjects">
                     <fieldset>
                         <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Title" placeholder="Title"/>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" form="formProjects" class="btn btn-primary">Create</button>
                     </fieldset>
                 </form>
             </div>
@@ -39,7 +39,7 @@
                         <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Title" placeholder="Title"/>
                         <input class="col-md-6 col-sm-6 col-xs-6 col-lg-6" name="Order" placeholder="Order"/>
                         <input class="col-md-6 col-sm-6 col-xs-6 col-lg-6" name="DueDate" placeholder="DueDate"/>
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" form="formTasks" class="btn btn-primary">Create</button>
                     </fieldset>
                 </form>
             </div>

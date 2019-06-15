@@ -3,7 +3,7 @@
 
 """
 
-from flask import Flask, request, jsonify, make_response, redirect, url_for
+from flask import Flask, request, jsonify, make_response, redirect, url_for, render_template, send_from_directory
 from sqlalchemy.ext.declarative import DeclarativeMeta
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from datetime import datetime
@@ -12,7 +12,7 @@ import sqlalchemy.exc
 import database_creation
 import json
 
-app = Flask(__name__, static_url_path='/static', )
+app = Flask(__name__, template_folder="templates")
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'the random string'
@@ -49,7 +49,12 @@ def load_user(id):
 
 @app.route('/')
 def index():
-    return app.send_static_file('index_bootstrap.html')
+    return render_template('index_bootstrap.html')
+
+
+@app.route("/mainPage/")
+def mainPage():
+    return render_template('MainPage.html')
 
 
 @app.route("/api/user/", methods=['GET'])
@@ -87,22 +92,24 @@ def do_login():  # todo
     user = bd.get_login_user(username, password)
     print("Login User")
     print(user)
+    return redirect(url_for("mainPage"))
 
     # se existir mandar ok
     if user is not None:
         # create session
         login_user(user)
         return make_response(jsonify("You logged in"), 201)
+        #return redirect("static/MainPage.html", 301)
     else:
         return make_response(jsonify("Invalid user"), 401)
 
 
-@app.route("/api/user/logout/", methods=['GET'])
+@app.route("/api/user/logout/", methods=['POST'])
 @login_required
 def do_logout():  # todo
     print("logout")
     logout_user()
-    return make_response(jsonify("Logout done"), 201)
+    return make_response(jsonify("Logout done"), 200)
 
 
 @app.route("/api/user/register/", methods=['POST'])

@@ -14,7 +14,7 @@ function getProjects() {
         ul.innerHTML = '';
         for (var i in projects) {
             var li = document.createElement('li');
-            li.innerHTML = projects[i].title + "" + projects[i].last_updated + projects[i].creation_date;
+            li.innerHTML = projects[i].title + " - Creation Date: " + projects[i].creation_date +" - Last Update: "+ projects[i].last_updated;
             li.innerHTML += " <button onclick='updateProject(" + projects[i].id + ")'>Update</button>";
             li.innerHTML += " <button onclick='deleteProject(" + projects[i].id + ")'>Delete</button>";
             li.innerHTML += " <button onclick='selectProject(" + projects[i].id + ")'>Select</button>";
@@ -39,7 +39,7 @@ function createProject() {
 }
 
 function updateProject(id) {
-    var form = document.getElementById("formLogin");
+    var form = document.getElementById("CriarProjectos");
     var title = form.Title.value;
 
     var req = new XMLHttpRequest();
@@ -59,6 +59,19 @@ function deleteProject(id) {
     req.addEventListener("load", function () {
         getProjects();
     });
+    req.send();
+}
+
+function logout(){
+    var req = new XMLHttpRequest();
+    req.open("POST", "/api/user/logout/");
+    req.addEventListener("load", function () {
+        //window.location.replace('index_bootstrap.html');
+    });
+    req.send();
+
+    var req2= new XMLHttpRequest();
+    req.open("GET", "/");
     req.send();
 }
 

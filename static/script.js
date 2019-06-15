@@ -9,7 +9,7 @@ function elementosFilhos(elemento) {
         if(child.nodeType===Node.ELEMENT_NODE)
             childNode.push(child);
     return childNode;
-};
+}
 
 function substituirFilhos(id, novoFilho) {
     /** @todo Procurar o elemento com o id dado e substituir os seus filhos pelo novo filho. */
@@ -17,11 +17,10 @@ function substituirFilhos(id, novoFilho) {
     while(elemento.firstChild)
         elemento.removeChild(elemento.firstChild);
     elemento.appendChild(novoFilho);
-};
+}
 
 window.onload = function (event) {
-    window.dados = new Informacao("informacao");
-}
+};
 
 
 
@@ -34,7 +33,7 @@ function login() {
     req.open("POST", "/api/user/login/");
     req.setRequestHeader("Content-Type", "application/json");
     req.addEventListener("load", function(){
-        window.location.href = 'static/MainPage.html';
+        //window.location.replace( 'static/MainPage.html');
     });
     req.send(JSON.stringify({"username": username, "password": password}));
 }
