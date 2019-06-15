@@ -5,6 +5,7 @@
     <title>REST Client</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css" type="text/css">
     <script type="text/javascript" src="/static/script.js" defer></script>
 </head>
 <body>
@@ -20,7 +21,8 @@
                 <h1>Create Projects</h1>
                 <form action="javascript:createProject();" id="formProjects">
                     <fieldset>
-                        <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Title" placeholder="Title"/>
+                        <label for="Title"><h2>Title</h2></label>
+                        <input class="form-control" id="Title" name="Title" placeholder="Title"/>
                         <button type="submit" class="btn btn-primary">Create</button>
                     </fieldset>
                 </form>
@@ -36,9 +38,12 @@
                 <h1>Create Tasks</h1>
                 <form action="javascript:processar();" id="formTasks">
                     <fieldset>
-                        <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Title" placeholder="Title"/>
-                        <input class="col-md-6 col-sm-6 col-xs-6 col-lg-6" name="Order" placeholder="Order"/>
-                        <input class="col-md-6 col-sm-6 col-xs-6 col-lg-6" name="DueDate" placeholder="DueDate"/>
+                        <label for="Title1"><h2>Title</h2></label>
+                        <input class="form-control" id="Title1" name="Title" placeholder="Title"/>
+                        <label for="Order"><h2>Order</h2></label>
+                        <input class="form-control" id="Order" name="Order" placeholder="Order"/>
+                        <label for="DueDate"><h2>DueDate</h2></label>
+                        <input class="form-control" id="DueDate" name="DueDate" placeholder="DueDate"/>
                         <button type="submit" class="btn btn-primary">Create</button>
                     </fieldset>
                 </form>
