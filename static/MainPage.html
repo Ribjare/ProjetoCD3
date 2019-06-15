@@ -16,12 +16,14 @@
     <div class="container-fluid">
         <button type="button" class="btn btn-danger">Logout</button>
         <div class="row">
+
             <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content" id="CriarProjectos">
                 <h1>Create Projects</h1>
                 <form action="javascript:processar();" id="formProjects">
                     <fieldset>
-                        <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Title" placeholder="Title"/>
-                        <button type="button" class="btn btn-primary">Create</button>
+                        <label for="Title">Title</label>
+                        <input class="form-control" id="Title" name="Title" placeholder="Title"/>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </fieldset>
                 </form>
             </div>
@@ -36,10 +38,13 @@
                 <h1>Create Tasks</h1>
                 <form action="javascript:processar();" id="formTasks">
                     <fieldset>
-                        <input class="col-md-12 col-sm-12 col-xs-12 col-lg-12" name="Title" placeholder="Title"/>
-                        <input class="col-md-6 col-sm-6 col-xs-6 col-lg-6" name="Order" placeholder="Order"/>
-                        <input class="col-md-6 col-sm-6 col-xs-6 col-lg-6" name="DueDate" placeholder="DueDate"/>
-                        <button type="button" class="btn btn-primary">Create</button>
+                        <label for="Title1">Title</label>
+                        <input class="form-control" id="Title1" name="Title" placeholder="Title"/>
+                        <label for="Order">Order</label>
+                        <input class="form-control" id="Order" name="Order" placeholder="Order"/>
+                        <label for="DueDate">DueDate</label>
+                        <input class="form-control" id="DueDate" name="DueDate" placeholder="DueDate"/>
+                        <button type="submit" class="btn btn-primary">Create</button>
                     </fieldset>
                 </form>
             </div>
