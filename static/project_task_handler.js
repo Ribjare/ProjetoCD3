@@ -66,13 +66,10 @@ function logout(){
     var req = new XMLHttpRequest();
     req.open("POST", "/api/user/logout/");
     req.addEventListener("load", function () {
-        //window.location.replace('index_bootstrap.html');
+        window.location.replace('index_bootstrap.html');
     });
     req.send();
 
-    var req2= new XMLHttpRequest();
-    req.open("GET", "/");
-    req.send();
 }
 
 

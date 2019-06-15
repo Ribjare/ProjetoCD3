@@ -49,12 +49,14 @@ def load_user(id):
 
 @app.route('/')
 def index():
-    return render_template('index_bootstrap.html')
+    return app.send_static_file('index_bootstrap.html')
 
 
-@app.route("/mainPage/")
-def mainPage():
-    return render_template('MainPage.html')
+@app.route('/static/static/MainPage.html', methods=['GET'])
+@login_required
+def main_page():
+    print("asdasdasdasdas")
+    return make_response("", 200)
 
 
 @app.route("/api/user/", methods=['GET'])
@@ -92,14 +94,12 @@ def do_login():  # todo
     user = bd.get_login_user(username, password)
     print("Login User")
     print(user)
-    return redirect(url_for("mainPage"))
 
     # se existir mandar ok
     if user is not None:
         # create session
         login_user(user)
         return make_response(jsonify("You logged in"), 201)
-        #return redirect("static/MainPage.html", 301)
     else:
         return make_response(jsonify("Invalid user"), 401)
 

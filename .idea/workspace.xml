@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="471a8cf2-658b-453f-91f5-854a234fe913" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/static/MainPage.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/index_bootstrap.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/MainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/MainPage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index_bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index_bootstrap.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/project_task_handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/project_task_handler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/MainPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index_bootstrap.html" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
+            <state relative-caret-position="170">
+              <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
               <folding>
                 <element signature="e#34#126#0" expanded="true" />
               </folding>
@@ -32,10 +34,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/index_bootstrap.html">
+        <entry file="file://$PROJECT_DIR$/static/index_bootstrap.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="136">
+              <caret line="8" column="54" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -55,17 +57,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+            <state relative-caret-position="167">
+              <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/MainPage.html">
+        <entry file="file://$PROJECT_DIR$/static/MainPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="18" column="87" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="87" />
+            <state relative-caret-position="144">
+              <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -73,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+            <state relative-caret-position="136">
+              <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -122,11 +124,11 @@
         <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/static/bootstrappage.html" />
         <option value="$PROJECT_DIR$/static/index2.html" />
+        <option value="$PROJECT_DIR$/static/script.js" />
+        <option value="$PROJECT_DIR$/app.py" />
         <option value="$PROJECT_DIR$/static/index_bootstrap.html" />
         <option value="$PROJECT_DIR$/static/MainPage.html" />
-        <option value="$PROJECT_DIR$/static/script.js" />
         <option value="$PROJECT_DIR$/static/project_task_handler.js" />
-        <option value="$PROJECT_DIR$/app.py" />
       </list>
     </option>
   </component>
@@ -153,11 +155,6 @@
               <item name="ProjetoCD3" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="ProjetoCD3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ProjetoCD3" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -172,8 +169,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Daniel\Desktop\2º Ano\CD\ProjetoCD3\templates" />
       <recent name="C:\Users\Daniel\Desktop\2º Ano\CD\ProjetoCD3\static" />
+      <recent name="C:\Users\Daniel\Desktop\2º Ano\CD\ProjetoCD3\templates" />
       <recent name="C:\Users\Daniel\Desktop\2º Ano\CD\ProjetoCD3\api\user\login" />
       <recent name="C:\Users\Daniel\Desktop\2º Ano\CD\ProjetoCD3\template" />
     </key>
@@ -239,7 +236,7 @@
       <workItem from="1560529621654" duration="2449000" />
       <workItem from="1560536428694" duration="3769000" />
       <workItem from="1560550501244" duration="5000000" />
-      <workItem from="1560589843588" duration="14255000" />
+      <workItem from="1560589843588" duration="17982000" />
     </task>
     <task id="LOCAL-00001" summary="login parece feito&#10;register parece feto">
       <created>1559743638532</created>
@@ -346,11 +343,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560551438034</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="javla">
+      <created>1560605751206</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1560605751206</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98022000" />
+    <option name="totallyTimeSpent" value="101749000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -464,10 +468,11 @@
     <MESSAGE value="datas por resolver, ver que so podemos aceder aos projetos do user" />
     <MESSAGE value="falta testar muita coisa" />
     <MESSAGE value="jscritp do login &quot;done&quot; +/-" />
-    <option name="LAST_COMMIT_MESSAGE" value="jscritp do login &quot;done&quot; +/-" />
+    <MESSAGE value="javla" />
+    <option name="LAST_COMMIT_MESSAGE" value="javla" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjetoCD3$app.coverage" NAME="app Coverage Results" MODIFIED="1560604571545" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetoCD3$app.coverage" NAME="app Coverage Results" MODIFIED="1560609327664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/static/bootstrappage.html" />
@@ -493,44 +498,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
+    <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="68" column="10" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/index_bootstrap.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="19" column="28" lean-forward="true" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        <state relative-caret-position="170">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#34#126#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="10" selection-start-line="35" selection-start-column="10" selection-end-line="35" selection-end-column="10" />
+        <state relative-caret-position="167">
+          <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/MainPage.html">
+    <entry file="file://$PROJECT_DIR$/static/MainPage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="18" column="87" selection-start-line="18" selection-start-column="73" selection-end-line="18" selection-end-column="87" />
+        <state relative-caret-position="144">
+          <caret line="8" column="71" selection-start-line="8" selection-start-column="71" selection-end-line="8" selection-end-column="71" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.py">
+    <entry file="file://$PROJECT_DIR$/static/index_bootstrap.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="94" column="39" selection-start-line="94" selection-start-column="39" selection-end-line="94" selection-end-column="39" />
-          <folding>
-            <element signature="e#34#126#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="136">
+          <caret line="8" column="54" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="68" column="53" selection-start-line="68" selection-start-column="53" selection-end-line="68" selection-end-column="53" />
         </state>
       </provider>
     </entry>

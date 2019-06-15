@@ -33,7 +33,7 @@ function login() {
     req.open("POST", "/api/user/login/");
     req.setRequestHeader("Content-Type", "application/json");
     req.addEventListener("load", function(){
-        //window.location.replace( 'static/MainPage.html');
+        window.location.replace( 'static/MainPage.html');
     });
     req.send(JSON.stringify({"username": username, "password": password}));
 }
