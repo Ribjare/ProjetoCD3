@@ -81,7 +81,9 @@ class DataBase:
     def recreate_bd(self):
         self.add_user("Daniel", "daniel@gmail.com", "ribjare", "1234")
         self.add_user("Marcio", "marcio@gmail.com", "zhedish", "1234")
+        self.add_user("João","joao@gmail.com","F4TE","1234")
 
+    #   add a new user to the list
     def add_user(self, name, email, username, password):
         user_new = User(name=name, email=email, username=username, password=password)
         self.db.session.add(user_new)
@@ -92,7 +94,7 @@ class DataBase:
         new_project = Project(user_id=user, title=title, creation_date=datetime.now(), last_updated=datetime.now())
         self.db.session.add(new_project)
         self.db.session.commit()
-
+    #   add a new task to the list
     def add_task(self, project_id, title, order, due_date):
 
         new_task = Task(projeto_id=project_id, title=title, order=order, creation_date=datetime.now(),
@@ -104,47 +106,56 @@ class DataBase:
     def get_all_user(self):
         return self.db.session.query(User).all()
 
+    #   Returns all projects in database
     def get_all_projects(self):
         return self.db.session.query(Project).all()
 
+    #   Returns all tasks in database
     def get_all_task(self):
         return self.db.session.query(Task).all()
 
+    #   Returns a user by the id
     def get_user(self, id):
         return self.db.session.query(User).filter(User.id == id).first()
 
+    #   Returns login info of the current user
     def get_login_user(self, username, password):
         querielist = self.db.session.query(User).filter(User.username == username, User.password == password)
         for x in querielist:
             return x
 
+    #   Returns the current project
     def get_project(self, user_id, project_id):
         return self.db.session.query(Project).filter(Project.id == project_id, Project.user_id == user_id).first()
 
-    # Get All projects from a user
+    #   Get All projects from a user
     def get_all_projects_from_user(self, user_id):
         return self.db.session.query(Project).filter(Project.user_id == user_id).all()
 
-    # Get a task
+    #   Get a task
     def get_task(self, project_id, task_id):
         return self.db.session.query(Task).filter(Task.projeto_id == project_id, Task.id == task_id).first()
 
-    # Get all tasks from a project
+    #   Get all tasks from a project
     def get_all_task_from_project(self, project_id):
         return self.db.session.query(Task).filter(Task.projeto_id == project_id).all()
 
+    #   Deletes a project
     def delete_project(self, project_id):
         self.db.session.query(Project).filter(Project.id == project_id).delete()
         self.db.session.commit()
 
+    #   Updates the information of the project
     def update_project(self, project_id, changed_data):
         self.db.session.query(Project).filter(Project.id == project_id).update(changed_data)
         self.db.session.commit()
 
+    #   Delets a task
     def delete_task(self, task_id):
         self.db.session.query(Task).filter(Task.id == task_id).delete()
         self.db.session.commit()
 
+    #   Updates the information on the task
     def update_task(self, task_id, changed_data):
         self.db.session.query(Task).filter(Task.id == task_id).update(changed_data)
         self.db.session.commit()

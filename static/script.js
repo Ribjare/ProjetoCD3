@@ -22,7 +22,7 @@ function substituirFilhos(id, novoFilho) {
 window.onload = function (event) {
 };
 
-
+// função que faz o login do user
 function login() {
     var form = document.getElementById("formLogin");
     var username = form.UserName.value;
@@ -43,6 +43,7 @@ function login() {
     req.send(JSON.stringify({"username": username, "password": password}));
 }
 
+// função que regista um user
 function register() {
     var form = document.getElementById("formRegistar");
     var name = form.Name.value;

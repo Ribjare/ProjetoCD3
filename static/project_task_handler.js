@@ -64,7 +64,7 @@ function createTaskScreen(id) {
     if (div.childNodes.length >= 1) {
         div.removeChild(div.childNodes[0]);
     }
-
+    //create a form
     var createform = document.createElement('form');
     createform.setAttribute("action", "javascript:createTask(" + id + ");");
     createform.setAttribute("id", "formTasks");
@@ -88,6 +88,7 @@ function createTaskScreen(id) {
     titleInput.setAttribute("placeholder", "Title");
     fieldset.appendChild(titleInput);
 
+    //create Order label
     var order = document.createElement("label");
     title.setAttribute("for", "Order");
     var hOrder = document.createElement("h2");
@@ -95,6 +96,7 @@ function createTaskScreen(id) {
     order.appendChild(hOrder);
     fieldset.appendChild(order);
 
+    //create Order input
     var orderInput = document.createElement("input");
     orderInput.setAttribute("class", "form-control");
     orderInput.setAttribute("id", "Order");
@@ -102,6 +104,7 @@ function createTaskScreen(id) {
     orderInput.setAttribute("placeholder", "Order");
     fieldset.appendChild(orderInput);
 
+    //create DueDate Label
     var duedate = document.createElement("label");
     title.setAttribute("for", "DueDate");
     var hDudedate = document.createElement("h2");
@@ -109,6 +112,7 @@ function createTaskScreen(id) {
     duedate.appendChild(hDudedate);
     fieldset.appendChild(duedate);
 
+    //create DueDate input
     var duedateInput = document.createElement("input");
     duedateInput.setAttribute("class", "form-control");
     duedateInput.setAttribute("id", "DueDate");
@@ -116,6 +120,7 @@ function createTaskScreen(id) {
     duedateInput.setAttribute("placeholder", "day month year");
     fieldset.appendChild(duedateInput);
 
+    //create a button to submit
     var submitBtt = document.createElement("button");
     submitBtt.setAttribute("type", "submit");
     submitBtt.setAttribute("form", "formTasks");
@@ -128,7 +133,7 @@ function createTaskScreen(id) {
     div.appendChild(createform);
 
 }
-
+//função que cria um projecto
 function createProject() {
     var form = document.getElementById("formProjects");
     var title = form.Title.value;
@@ -141,7 +146,7 @@ function createProject() {
     });
     req.send(JSON.stringify({"title": title}));
 }
-
+//função para fazer update num projecto
 function updateProject(id) {
     var form = document.getElementById("Title");
     var title = form.value;
@@ -155,7 +160,7 @@ function updateProject(id) {
     req.send(JSON.stringify({"title": title}));
 }
 
-
+//função para apagar um projecto
 function deleteProject(id) {
 
     var req = new XMLHttpRequest();
@@ -165,7 +170,7 @@ function deleteProject(id) {
     });
     req.send();
 }
-
+//função para fazer logout
 function logout() {
     var req = new XMLHttpRequest();
     req.open("POST", "/api/user/logout/");
@@ -175,7 +180,7 @@ function logout() {
     req.send();
 
 }
-
+//função para criar uma tarefa
 function createTask(project_id) {
     var form = document.getElementById("formTasks");
 
@@ -192,7 +197,7 @@ function createTask(project_id) {
     });
     req.send(JSON.stringify({"title": title, "order": order, "due_date": due_date}));
 }
-
+//função para fazer update a uma tarefa
 function updateTask(id_projeto, id_task, completed) {
     var ogTitle = undefined;
     var ogOrder = undefined;
@@ -242,7 +247,7 @@ function updateTask(id_projeto, id_task, completed) {
 
 
 }
-
+//função para apagar uma tarefa
 function deleteTask(id_projeto, id_task) {
     var req = new XMLHttpRequest();
     req.open("DELETE", "/api/projects/" + id_projeto + "/tasks/" + id_task + "/");

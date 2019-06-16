@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./database.db'
 bd = database_creation.DataBase(app)
 
 
-class AlchemyEncoder(json.JSONEncoder):
+class AlchemyEncoder(json.JSONEncoder): # classe que transforma objectos em json
 
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
@@ -29,7 +29,7 @@ class AlchemyEncoder(json.JSONEncoder):
             for field in [x for x in dir(obj) if not x.startswith('_') and x != 'metadata']:
                 data = obj.__getattribute__(field)
                 try:
-                    if type(data) == datetime:
+                    if type(data) == datetime: # se o objecto for DateTime faz so toString e nao converte
                         fields[field] = "{}-{}-{}".format(data.year, data.month, data.day)
                     else:
                         json.dumps(data)
@@ -43,30 +43,29 @@ class AlchemyEncoder(json.JSONEncoder):
 
 
 @login_manager.user_loader
-def load_user(id):
+def load_user(id): # função que devolve um user, utilizada para o plug-in para o flask-login
     return bd.get_user(id)
 
 
 @app.route('/static/index_bootstrap.html', methods=['GET'])
-def index_redirect():
+def index_redirect(): # função para voltar para a pagina principal
     return redirect(url_for('index'))
 
 
 @app.route('/')
-def index():
+def index(): # função que define a pagina principal
     return app.send_static_file('index_bootstrap.html')
 
 
 @app.route('/static/static/MainPage.html', methods=['GET'])
 @login_required
-def main_page():
-    print("asdasdasdasdas")
+def main_page(): # função que retorna uma resposta
     return make_response("", 200)
 
 
 @app.route("/api/user/", methods=['GET'])
 @login_required
-def get_current_user():  # Todo gets current user
+def get_current_user():  # função que retorna o utilizador atual
     print("Current user")
 
     # get the information of json
@@ -86,7 +85,7 @@ def get_current_user():  # Todo gets current user
 
 
 @app.route("/api/user/login/", methods=['POST'])
-def do_login():  # todo
+def do_login():  # faz o login do utilizador e devolve mensagens de 201 ou 401 conforme tenha tido sucesso ou nao
     print("login")
 
     data = request.get_json()
@@ -111,14 +110,14 @@ def do_login():  # todo
 
 @app.route("/api/user/logout/", methods=['POST'])
 @login_required
-def do_logout():  # todo
+def do_logout():  # função que faz o logout do utilizador
     print("logout")
     logout_user()
     return make_response(jsonify("Logout done"), 200)
 
 
 @app.route("/api/user/register/", methods=['POST'])
-def register():  # todo
+def register():  # função que regista o utilizador
     print(bd.get_all_user())
     print("register")
     data = request.get_json()
@@ -149,7 +148,7 @@ def register():  # todo
 # Post- creates a project
 @app.route("/api/projects/", methods=['GET', 'POST'])
 @login_required
-def get_all_project():  # todo
+def get_all_project():  # função que devolve todos os projectos
     print("ALL PROJECT")
     print(current_user)
     if request.method == 'GET':
@@ -171,7 +170,7 @@ def get_all_project():  # todo
 
 @app.route("/api/projects/<int:id>/", methods=['GET', 'PUT', 'DELETE'])
 @login_required
-def get_project(id):  # todo parametro para a exceçao
+def get_project(id):  # função que devolve um deteminado projecto atravez do seu id
 
     # Gets the target project
     if request.method == 'GET':
@@ -203,7 +202,7 @@ def get_project(id):  # todo parametro para a exceçao
 # Post- creates a task
 @app.route("/api/projects/<int:id>/tasks/", methods=['GET', 'POST'])
 @login_required
-def get_all_task(id):  # todo
+def get_all_task(id):  # função que devolve todas as tarefas
     print("Get all tasks")
     project = bd.get_project(current_user.id, id)
 
@@ -234,7 +233,7 @@ def get_all_task(id):  # todo
 
 @app.route("/api/projects/<int:id_project>/tasks/<int:id_task>/", methods=['GET', 'PUT', 'DELETE'])
 @login_required
-def get_task(id_project, id_task):  # todo
+def get_task(id_project, id_task):  # função que devolve uma tarefa pelo id do projecto e pelo id da tarefa
     print("Get task")
     print(current_user.id, id_project)
     project = bd.get_project(current_user.id, id_project)
