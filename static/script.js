@@ -4,9 +4,9 @@
  */
 function elementosFilhos(elemento) {
     /** @todo Retornar os elementos filhos (nós do tipo Node.ELEMENT_NODE) num array */
-    let childNode= [];
-    for(let child of elemento.childNodes)
-        if(child.nodeType===Node.ELEMENT_NODE)
+    let childNode = [];
+    for (let child of elemento.childNodes)
+        if (child.nodeType === Node.ELEMENT_NODE)
             childNode.push(child);
     return childNode;
 }
@@ -14,14 +14,13 @@ function elementosFilhos(elemento) {
 function substituirFilhos(id, novoFilho) {
     /** @todo Procurar o elemento com o id dado e substituir os seus filhos pelo novo filho. */
     let elemento = document.getElementById(id);
-    while(elemento.firstChild)
+    while (elemento.firstChild)
         elemento.removeChild(elemento.firstChild);
     elemento.appendChild(novoFilho);
 }
 
 window.onload = function (event) {
 };
-
 
 
 function login() {
@@ -32,18 +31,19 @@ function login() {
     var req = new XMLHttpRequest();
     req.open("POST", "/api/user/login/");
     req.setRequestHeader("Content-Type", "application/json");
-    req.addEventListener("load", function(){
-        if(this.status === 201){
-            window.location.replace( 'static/MainPage.html');
-        }else{
-            responselogin = document.getElementById("loginResponse");
+    req.addEventListener("load", function () {
+        if (this.status === 201) {
+            window.location.replace('static/MainPage.html');
+        } else {
+            var responselogin = document.getElementById("loginResponse");
+            responselogin.setAttribute("class", "text-danger");
             responselogin.innerHTML = this.responseText;
         }
     });
     req.send(JSON.stringify({"username": username, "password": password}));
 }
 
-function register(){
+function register() {
     var form = document.getElementById("formRegistar");
     var name = form.Name.value;
     var email = form.Email.value;
@@ -54,18 +54,25 @@ function register(){
     var req = new XMLHttpRequest();
     req.open("POST", "/api/user/register/");
     req.setRequestHeader("Content-Type", "application/json");
-    req.addEventListener("load", function(){
-        responseDiv = document.getElementById("responseRegistar");
+    req.addEventListener("load", function () {
+        var responseDiv = document.getElementById("responseRegistar");
 
-        if(this.status === 400){
+        if (this.status === 400) {
+            responseDiv.setAttribute("class", "text-danger");
             responseDiv.innerHTML = this.responseText;
-        }else if(this.status === 201){
+        } else if (this.status === 201) {
+            responseDiv.setAttribute("class", "text-success");
             responseDiv.innerHTML = "Utilizador Registado Com Sucesso";
+        }
+        else if (this.status === 500){
+
         }
         console.log(this.status);
     });
-    req.send(JSON.stringify({"username": username, "password": password,
-                            "name": name, "email": email}));
+    req.send(JSON.stringify({
+        "username": username, "password": password,
+        "name": name, "email": email
+    }));
 
 }
 

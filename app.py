@@ -32,7 +32,7 @@ class AlchemyEncoder(json.JSONEncoder):
                     if type(data) == datetime:
                         fields[field] = "{}-{}-{}".format(data.year, data.month, data.day)
                     else:
-                        json.dumps(data)  # this will fail on non-encodable values, like other classes
+                        json.dumps(data)
                         fields[field] = data
                 except TypeError:
                     fields[field] = None
@@ -45,6 +45,11 @@ class AlchemyEncoder(json.JSONEncoder):
 @login_manager.user_loader
 def load_user(id):
     return bd.get_user(id)
+
+
+@app.route('/static/index_bootstrap.html', methods=['GET'])
+def index_redirect():
+    return redirect(url_for('index'))
 
 
 @app.route('/')
@@ -127,15 +132,14 @@ def register():  # todo
     except KeyError:
         print("aprametro")
         return make_response(jsonify("Missing parameter"), 400)
-    except sqlalchemy.exc.IntegrityError:
-        print("intengrity")
-        return make_response(jsonify("Integrity Error"), 400)
 
     user = bd.get_login_user(username, password)
 
     if user is None:
-        bd.add_user(username=username, password=password, name=name, email=email)
-        print(bd.get_all_user())
+        try:
+            bd.add_user(username=username, password=password, name=name, email=email)
+        except sqlalchemy.exc.IntegrityError:
+            return make_response(jsonify("Email ou username já registados"), 400)
         return make_response(jsonify("Registed"), 201)
     else:
         return make_response((jsonify("User Already Register"), 400))
@@ -259,4 +263,6 @@ def get_task(id_project, id_task):  # todo
             return make_response(jsonify('Task Deleted'), 200)
 
 
-app.run(host='0.0.0.0', port=8000, debug=True)
+# The start of the program
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000, debug=True)
