@@ -232,6 +232,7 @@ def get_all_task(id):  # todo
 @login_required
 def get_task(id_project, id_task):  # todo
     print("Get task")
+    print(current_user.id, id_project)
     project = bd.get_project(current_user.id, id_project)
 
     # Check if the current user as access to this project

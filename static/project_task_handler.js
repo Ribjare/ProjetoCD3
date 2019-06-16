@@ -30,20 +30,22 @@ function getTask(id_projeto) {
     req.open("GET", "/api/projects/" + id_projeto + "/tasks/");
     req.addEventListener("load", function () {
 
-        console.log(this.responseText);
         var tasks = JSON.parse(this.responseText);
         var ul = document.getElementById('listTasks');
 
         ul.innerHTML = '';
 
+        tasks.sort(function (a, b) {
+            return (a.order > b.order) ? 1 : -1
+        });
 
         for (var i in tasks) {
 
             var li = document.createElement('li');
             li.innerHTML = tasks[i].title + " - Due Date: " + tasks[i].due_date + "- Completed: " + tasks[i].completed;
-            li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateTask("+ id_projeto +"," + tasks[i].id + ")'>Update</button>";
-            li.innerHTML += " <button class=\"btn btn-primary\" onclick='deleteTask("+ id_projeto + tasks[i].id + ")'>Delete</button>";
-            li.innerHTML += " <button class=\"btn btn-primary\" onclick='completeTask("+ id_projeto + tasks[i].id + ")'>Complete</button>";
+            li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateTask(" + id_projeto + "," + tasks[i].id + "," + false + ")'>Update</button>";
+            li.innerHTML += " <button class=\"btn btn-primary\" onclick='deleteTask(" + id_projeto +","+ tasks[i].id + ")'>Delete</button>";
+            li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateTask(" + id_projeto +","+ tasks[i].id + "," + true + ")'>Complete</button>";
 
             ul.appendChild(li);
         }
@@ -54,18 +56,17 @@ function getTask(id_projeto) {
 function selectProject(id) {
     getTask(id);
     createTaskScreen(id);
-    console.log(id);
 }
 
-function createTaskScreen(id){
+function createTaskScreen(id) {
     var div = document.getElementById("tarefasForm");
 
-    if(div.childNodes.length >=1){
+    if (div.childNodes.length >= 1) {
         div.removeChild(div.childNodes[0]);
     }
 
     var createform = document.createElement('form');
-    createform.setAttribute("action", "javascript:createTask("+id+");");
+    createform.setAttribute("action", "javascript:createTask(" + id + ");");
     createform.setAttribute("id", "formTasks");
     div.appendChild(createform);
 
@@ -177,58 +178,78 @@ function logout() {
 
 function createTask(project_id) {
     var form = document.getElementById("formTasks");
+
     var title = form.Title.value;
     var order = form.Order.value;
     var due_date = form.DueDate.value;
 
-    console.log(title, order, due_date);
 
     var req = new XMLHttpRequest();
-    req.open("POST", "/api/projects/"+ project_id +"/tasks/");
+    req.open("POST", "/api/projects/" + project_id + "/tasks/");
     req.setRequestHeader("Content-Type", "application/json");
     req.addEventListener("load", function () {
         getTask(project_id);
     });
-    req.send(JSON.stringify({"title": title, "order":order, "due_date":due_date}));
+    req.send(JSON.stringify({"title": title, "order": order, "due_date": due_date}));
 }
 
-function updateTask(id_projeto, id_task){
-    var form = document.getElementById("formTasks");
+function updateTask(id_projeto, id_task, completed) {
+    var ogTitle = undefined;
+    var ogOrder = undefined;
+    var ogDue_date = undefined;
+    var ogComplete = undefined;
 
-    var title = form.Title.value;
-    var order = form.Order.value;
-    var due_date = form.DueDate.value;
+    var req1 = new XMLHttpRequest();
+    req1.open("GET", "/api/projects/" + id_projeto + "/tasks/" + id_task + "/");
+    req1.addEventListener("load", function () {
 
-    var req = new XMLHttpRequest();
-    req.open("PUT", "/api/projects/" + id_projeto + "/tasks/" + id_task);
-    req.setRequestHeader("Content-Type", "application/json");
-    req.addEventListener("load", function () {
-        getTask(id_projeto);
+        var tasks = JSON.parse(this.responseText);
+        console.log(tasks);
+        ogTitle = tasks.title;
+        ogOrder = tasks.order;
+        ogDue_date = tasks.due_date;
+        ogComplete = tasks.completed;
+
+
+        var title = document.getElementById("Title1").value;
+        if (title === null) {
+            title = ogTitle;
+        }
+        console.log("title: ", title);
+
+        var order = document.getElementById("Order").value;
+        if (order === null) {
+            order = ogOrder;
+        }
+        console.log("order:", order);
+
+        var due_date = document.getElementById("DueDate").value;
+        if (due_date === undefined) {
+            due_date = ogDue_date;
+            console.log("safajvhsfvc");
+        }
+        console.log("due_date: ", due_date);
+
+        var req = new XMLHttpRequest();
+        req.open("PUT", "/api/projects/" + id_projeto + "/tasks/" + id_task + "/");
+        req.setRequestHeader("Content-Type", "application/json");
+        req.addEventListener("load", function () {
+            getTask(id_projeto);
+        });
+        req.send(JSON.stringify({"title": title, "order": order, "due_date": due_date, "completed": completed}));
     });
+    req1.send();
 
-     req.send(JSON.stringify({"title": title, "order":order, "due_date":due_date}));
+
 }
 
-function deleteTask(id_projeto, id_task){
+function deleteTask(id_projeto, id_task) {
     var req = new XMLHttpRequest();
-    req.open("DELETE", "/api/projects/" + id_projeto + "/tasks/" + id_task);
+    req.open("DELETE", "/api/projects/" + id_projeto + "/tasks/" + id_task + "/");
     req.addEventListener("load", function () {
         getTask(id_projeto);
     });
     req.send();
-}
-
-function completeTask(id_projeto, id_task){
-
-
-    var req = new XMLHttpRequest();
-    req.open("PUT", "/api/projects/" + id_projeto + "/tasks/" + id_task);
-    req.setRequestHeader("Content-Type", "application/json");
-    req.addEventListener("load", function () {
-        getTask(id_projeto);
-    });
-
-    req.send(JSON.stringify({"completed": true}));
 }
 
 getProjects();

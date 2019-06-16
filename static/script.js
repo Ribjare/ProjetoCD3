@@ -33,7 +33,12 @@ function login() {
     req.open("POST", "/api/user/login/");
     req.setRequestHeader("Content-Type", "application/json");
     req.addEventListener("load", function(){
-        window.location.replace( 'static/MainPage.html');
+        if(this.status === 201){
+            window.location.replace( 'static/MainPage.html');
+        }else{
+            responselogin = document.getElementById("loginResponse");
+            responselogin.innerHTML = this.responseText;
+        }
     });
     req.send(JSON.stringify({"username": username, "password": password}));
 }
@@ -50,7 +55,14 @@ function register(){
     req.open("POST", "/api/user/register/");
     req.setRequestHeader("Content-Type", "application/json");
     req.addEventListener("load", function(){
+        responseDiv = document.getElementById("responseRegistar");
 
+        if(this.status === 400){
+            responseDiv.innerHTML = this.responseText;
+        }else if(this.status === 201){
+            responseDiv.innerHTML = "Utilizador Registado Com Sucesso";
+        }
+        console.log(this.status);
     });
     req.send(JSON.stringify({"username": username, "password": password,
                             "name": name, "email": email}));
