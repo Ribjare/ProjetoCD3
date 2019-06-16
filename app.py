@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///./database.db'
 bd = database_creation.DataBase(app)
 
 
-class AlchemyEncoder(json.JSONEncoder): # classe que transforma objectos em json
+class AlchemyEncoder(json.JSONEncoder):     # classe que transforma objectos em json
 
     def default(self, obj):
         if isinstance(obj.__class__, DeclarativeMeta):
@@ -53,13 +53,13 @@ def index_redirect(): # função para voltar para a pagina principal
 
 
 @app.route('/')
-def index(): # função que define a pagina principal
+def index():     # função que define a pagina principal
     return app.send_static_file('index_bootstrap.html')
 
 
 @app.route('/static/static/MainPage.html', methods=['GET'])
 @login_required
-def main_page(): # função que retorna uma resposta
+def main_page():     # função que retorna uma resposta
     return make_response("", 200)
 
 

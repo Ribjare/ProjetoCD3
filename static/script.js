@@ -65,10 +65,7 @@ function register() {
             responseDiv.setAttribute("class", "text-success");
             responseDiv.innerHTML = "Utilizador Registado Com Sucesso";
         }
-        else if (this.status === 500){
 
-        }
-        console.log(this.status);
     });
     req.send(JSON.stringify({
         "username": username, "password": password,

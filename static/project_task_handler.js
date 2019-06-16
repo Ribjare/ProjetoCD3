@@ -14,7 +14,8 @@ function getProjects() {
         ul.innerHTML = '';
         for (var i in projects) {
             var li = document.createElement('li');
-            li.innerHTML = projects[i].title + " - Creation Date: " + projects[i].creation_date + " - Last Update: " + projects[i].last_updated;
+            li.innerHTML = projects[i].title + " - Creation Date: " + projects[i].creation_date + " - Last Update: "
+                            + projects[i].last_updated;
             li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateProject(" + projects[i].id + ")'>Update</button>";
             li.innerHTML += " <button class=\"btn btn-primary\" onclick='deleteProject(" + projects[i].id + ")'>Delete</button>";
             li.innerHTML += " <button class=\"btn btn-primary\" onclick='selectProject(" + projects[i].id + ")'>Select</button>";
@@ -44,9 +45,8 @@ function getTask(id_projeto) {
             var li = document.createElement('li');
             li.innerHTML = tasks[i].title + " - Due Date: " + tasks[i].due_date + "- Completed: " + tasks[i].completed;
             li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateTask(" + id_projeto + "," + tasks[i].id + "," + false + ")'>Update</button>";
-            li.innerHTML += " <button class=\"btn btn-primary\" onclick='deleteTask(" + id_projeto +","+ tasks[i].id + ")'>Delete</button>";
-            li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateTask(" + id_projeto +","+ tasks[i].id + "," + true + ")'>Complete</button>";
-
+            li.innerHTML += " <button class=\"btn btn-primary\" onclick='deleteTask(" + id_projeto + "," + tasks[i].id + ")'>Delete</button>";
+            li.innerHTML += " <button class=\"btn btn-primary\" onclick='updateTask(" + id_projeto + "," + tasks[i].id + "," + true + ")'>Complete</button>";
             ul.appendChild(li);
         }
     });
@@ -63,8 +63,14 @@ function createTaskScreen(id) {
 
     if (div.childNodes.length >= 1) {
         div.removeChild(div.childNodes[0]);
+        div.removeChild(div.childNodes[0]);
     }
     //create a form
+
+    var projectLabel = document.createElement("h2");
+    projectLabel.innerHTML = "Selected Project : " + id;
+    div.appendChild(projectLabel);
+
     var createform = document.createElement('form');
     createform.setAttribute("action", "javascript:createTask(" + id + ");");
     createform.setAttribute("id", "formTasks");

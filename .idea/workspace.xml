@@ -5,7 +5,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/database.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/index_bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/index_bootstrap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/MainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/static/MainPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/project_task_handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/project_task_handler.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/script.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
@@ -20,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="140" selection-start-line="140" selection-end-line="140" />
+            <state relative-caret-position="255">
+              <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -41,8 +42,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="64" column="38" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="38" />
+            <state relative-caret-position="119">
+              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
             </state>
           </provider>
         </entry>
@@ -50,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="274">
+              <caret line="66" column="9" lean-forward="true" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -59,8 +60,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/MainPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+            <state relative-caret-position="157">
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -121,19 +122,18 @@
         <option value="$PROJECT_DIR$/static/index.html" />
         <option value="$PROJECT_DIR$/static/bootstrappage.html" />
         <option value="$PROJECT_DIR$/static/index2.html" />
+        <option value="$PROJECT_DIR$/static/index_bootstrap.html" />
         <option value="$PROJECT_DIR$/static/MainPage.html" />
         <option value="$PROJECT_DIR$/static/project_task_handler.js" />
-        <option value="$PROJECT_DIR$/static/index_bootstrap.html" />
-        <option value="$PROJECT_DIR$/static/script.js" />
         <option value="$PROJECT_DIR$/app.py" />
+        <option value="$PROJECT_DIR$/static/script.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="401" />
-    <option name="y" value="-17" />
-    <option name="width" value="697" />
-    <option name="height" value="735" />
+    <option name="x" value="359" />
+    <option name="width" value="973" />
+    <option name="height" value="721" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -237,7 +237,7 @@
       <workItem from="1560550501244" duration="5000000" />
       <workItem from="1560589843588" duration="21958000" />
       <workItem from="1560613619067" duration="15000000" />
-      <workItem from="1560635501152" duration="10650000" />
+      <workItem from="1560635501152" duration="15492000" />
     </task>
     <task id="LOCAL-00001" summary="login parece feito&#10;register parece feto">
       <created>1559743638532</created>
@@ -379,11 +379,18 @@
       <option name="project" value="LOCAL" />
       <updated>1560678092618</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="JAVLA6-:D">
+      <created>1560680533402</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1560680533402</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131375000" />
+    <option name="totallyTimeSpent" value="136217000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,18 +405,18 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17549168" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.3642072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7034796" visible="true" weight="0.44844517" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7034796" weight="0.19639935" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.4977307" weight="0.45662847" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" sideWeight="0.4977307" visible="true" weight="0.2667758" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.2965204" side_tool="true" weight="0.19312602" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.18330605" />
@@ -502,10 +509,11 @@
     <MESSAGE value="javla3" />
     <MESSAGE value="javla4-isto começa" />
     <MESSAGE value="JAVLA5-FUCK MY LIFE" />
-    <option name="LAST_COMMIT_MESSAGE" value="JAVLA5-FUCK MY LIFE" />
+    <MESSAGE value="JAVLA6-:D" />
+    <option name="LAST_COMMIT_MESSAGE" value="JAVLA6-:D" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjetoCD3$app.coverage" NAME="app Coverage Results" MODIFIED="1560677187630" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ProjetoCD3$app.coverage" NAME="app Coverage Results" MODIFIED="1560681269802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/static/bootstrappage.html" />
@@ -531,23 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="64" column="38" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/MainPage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/index_bootstrap.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -555,17 +546,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/project_task_handler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/MainPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/static/script.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
+        <state relative-caret-position="274">
+          <caret line="66" column="9" lean-forward="true" selection-start-line="66" selection-start-column="9" selection-end-line="66" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
+        <state relative-caret-position="255">
+          <caret line="22" column="44" selection-start-line="22" selection-start-column="44" selection-end-line="22" selection-end-column="44" />
         </state>
       </provider>
     </entry>
