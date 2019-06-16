@@ -8,7 +8,7 @@ from sqlalchemy.ext.declarative import DeclarativeMeta
 from flask_login import LoginManager, current_user, login_user, login_required, logout_user
 from datetime import datetime
 import sqlalchemy.exc
-
+import os
 import database_creation
 import json
 
@@ -43,21 +43,28 @@ class AlchemyEncoder(json.JSONEncoder):     # classe que transforma objectos em 
 
 
 @login_manager.user_loader
-def load_user(id): # função que devolve um user, utilizada para o plug-in para o flask-login
+def load_user(id):  # função que devolve um user, utilizada para o plug-in para o flask-login
     return bd.get_user(id)
 
 
-@app.route('/static/index_bootstrap.html', methods=['GET'])
-def index_redirect(): # função para voltar para a pagina principal
+@app.route('/static/index.html', methods=['GET'])
+def index_redirect():    # função para voltar para a pagina principal
     return redirect(url_for('index'))
 
 
 @app.route('/')
 def index():     # função que define a pagina principal
-    return app.send_static_file('index_bootstrap.html')
+    return app.send_static_file('index.html')
 
 
-@app.route('/static/static/MainPage.html', methods=['GET'])
+#   to get the favicon image
+@app.route('/imagens/python-logo.png')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'python-logo.png')
+
+
+@app.route('/static/static/projectPage.html', methods=['GET'])
 @login_required
 def main_page():     # função que retorna uma resposta
     return make_response("", 200)

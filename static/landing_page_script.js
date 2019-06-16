@@ -33,7 +33,7 @@ function login() {
     req.setRequestHeader("Content-Type", "application/json");
     req.addEventListener("load", function () {
         if (this.status === 201) {
-            window.location.replace('static/MainPage.html');
+            window.location.replace('static/projectPage.html');
         } else {
             var responselogin = document.getElementById("loginResponse");
             responselogin.setAttribute("class", "text-danger");

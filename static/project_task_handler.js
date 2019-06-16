@@ -181,12 +181,12 @@ function logout() {
     var req = new XMLHttpRequest();
     req.open("POST", "/api/user/logout/");
     req.addEventListener("load", function () {
-        window.location.replace('index_bootstrap.html');
+        window.location.replace('index.html');
     });
     req.send();
 
 }
-//função para criar uma tarefa
+//função para criar uma tarefa, esta funçao esta a ser chamada na criaçao de butoes na criaçao das listas de task
 function createTask(project_id) {
     var form = document.getElementById("formTasks");
 
@@ -253,6 +253,7 @@ function updateTask(id_projeto, id_task, completed) {
 
 
 }
+
 //função para apagar uma tarefa
 function deleteTask(id_projeto, id_task) {
     var req = new XMLHttpRequest();
