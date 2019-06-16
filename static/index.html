@@ -3,7 +3,6 @@
 <head>
     <title>Tasklists</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="imagens/python-logo.png">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/4/superhero/bootstrap.min.css" type="text/css">
@@ -16,8 +15,13 @@
      padding:10px">
   <div class="container-fluid">
     <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12 col-lg-12 content">
+        <h1 class="text-success" >TASKLISTS</h1>
+        </div>
+    </div>
+    <div  class="row" rowspan="2">
       <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content">
-        <h1>Login</h1>
+        <h1 class="text-info">Login</h1>
         <ul id="users"></ul>
         <form action= "javascript:login();" id="formLogin">
                 <label for="UserName"><h2>User Name</h2></label>
@@ -30,7 +34,7 @@
           <p id = "loginResponse"></p>
       </div>
       <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 content">
-          <h1>Registar</h1>
+          <h1 class="text-info">Registar</h1>
           <form action= "javascript:register();" id="formRegistar">
               <fieldset>
                   <label for="Name"><h2>Name</h2></label>
