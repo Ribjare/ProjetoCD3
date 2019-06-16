@@ -2,7 +2,7 @@
  *
  */
 
-
+//função que devolve todos os projectos
 function getProjects() {
     var req = new XMLHttpRequest();
     req.open("GET", "/api/projects/");
@@ -25,7 +25,7 @@ function getProjects() {
     });
     req.send();
 }
-
+//funcção que devolve as tarefas de um projecto
 function getTask(id_projeto) {
     var req = new XMLHttpRequest();
     req.open("GET", "/api/projects/" + id_projeto + "/tasks/");
@@ -52,12 +52,12 @@ function getTask(id_projeto) {
     });
     req.send();
 }
-
+//função para selecionar o projecto e mostra as tarefas desse projecto
 function selectProject(id) {
     getTask(id);
     createTaskScreen(id);
 }
-
+//função para criar o ecra de tarefas
 function createTaskScreen(id) {
     var div = document.getElementById("tarefasForm");
 
