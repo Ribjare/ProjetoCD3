@@ -215,7 +215,6 @@ function updateTask(id_projeto, id_task, completed) {
     req1.addEventListener("load", function () {
 
         var tasks = JSON.parse(this.responseText);
-        console.log(tasks);
         ogTitle = tasks.title;
         ogOrder = tasks.order;
         ogDue_date = tasks.due_date;
@@ -226,20 +225,16 @@ function updateTask(id_projeto, id_task, completed) {
         if (title === null) {
             title = ogTitle;
         }
-        console.log("title: ", title);
 
         var order = document.getElementById("Order").value;
         if (order === null) {
             order = ogOrder;
         }
-        console.log("order:", order);
 
         var due_date = document.getElementById("DueDate").value;
         if (due_date === undefined) {
             due_date = ogDue_date;
-            console.log("safajvhsfvc");
         }
-        console.log("due_date: ", due_date);
 
         var req = new XMLHttpRequest();
         req.open("PUT", "/api/projects/" + id_projeto + "/tasks/" + id_task + "/");

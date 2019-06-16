@@ -92,7 +92,6 @@ def get_current_user():  # função que retorna o utilizador atual
         'Password': user.password
     }
 
-    print(x)
     # send message
     return make_response(jsonify(x), 200)
 
@@ -102,7 +101,6 @@ def do_login():  # faz o login do utilizador e devolve mensagens de 201 ou 401 c
     print("login")
 
     data = request.get_json()
-    print(data)
 
     username = data["username"]
     password = data["password"]
@@ -142,7 +140,6 @@ def register():  # função que regista o utilizador
         name = data["name"]
         email = data["email"]
     except KeyError:
-        print("aprametro")
         return make_response(jsonify("Missing parameter"), 400)
 
     user = bd.get_login_user(username, password)
@@ -248,7 +245,6 @@ def get_all_task(id):  # função que devolve todas as tarefas
 @login_required
 def get_task(id_project, id_task):  # função que devolve uma tarefa pelo id do projecto e pelo id da tarefa
     print("Get task")
-    print(current_user.id, id_project)
     project = bd.get_project(current_user.id, id_project)
 
     # Check if the current user as access to this project
