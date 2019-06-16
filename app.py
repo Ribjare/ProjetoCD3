@@ -12,6 +12,7 @@ import os
 import database_creation
 import json
 
+# configurations zone
 app = Flask(__name__, template_folder="templates")
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -62,6 +63,11 @@ def index():     # função que define a pagina principal
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'python-logo.png')
+
+
+@app.route('/static/imagens/python-logo.png')
+def favicon_redirect():
+    return redirect(url_for("favicon"))
 
 
 @app.route('/static/static/projectPage.html', methods=['GET'])
